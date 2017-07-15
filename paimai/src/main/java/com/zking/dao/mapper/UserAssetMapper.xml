@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.dao.UserAssetMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.pojo.UserAsset" >
+    <id column="userasset_id" property="userassetId" jdbcType="INTEGER" />
+    <result column="userasset_time" property="userassetTime" jdbcType="TIMESTAMP" />
+    <result column="userassetpeople_id" property="userassetpeopleId" jdbcType="INTEGER" />
+    <result column="userasset_level" property="userassetLevel" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    userasset_id, userasset_time, userassetpeople_id, userasset_level
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zking.pojo.UserAssetExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from userasset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userasset
+    where userasset_id = #{userassetId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userasset
+    where userasset_id = #{userassetId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zking.pojo.UserAssetExample" >
+    delete from userasset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.UserAsset" >
+    insert into userasset (userasset_id, userasset_time, userassetpeople_id, 
+      userasset_level)
+    values (#{userassetId,jdbcType=INTEGER}, #{userassetTime,jdbcType=TIMESTAMP}, #{userassetpeopleId,jdbcType=INTEGER}, 
+      #{userassetLevel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.UserAsset" >
+    insert into userasset
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userassetId != null" >
+        userasset_id,
+      </if>
+      <if test="userassetTime != null" >
+        userasset_time,
+      </if>
+      <if test="userassetpeopleId != null" >
+        userassetpeople_id,
+      </if>
+      <if test="userassetLevel != null" >
+        userasset_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userassetId != null" >
+        #{userassetId,jdbcType=INTEGER},
+      </if>
+      <if test="userassetTime != null" >
+        #{userassetTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userassetpeopleId != null" >
+        #{userassetpeopleId,jdbcType=INTEGER},
+      </if>
+      <if test="userassetLevel != null" >
+        #{userassetLevel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zking.pojo.UserAssetExample" resultType="java.lang.Integer" >
+    select count(*) from userasset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update userasset
+    <set >
+      <if test="record.userassetId != null" >
+        userasset_id = #{record.userassetId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userassetTime != null" >
+        userasset_time = #{record.userassetTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.userassetpeopleId != null" >
+        userassetpeople_id = #{record.userassetpeopleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userassetLevel != null" >
+        userasset_level = #{record.userassetLevel,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update userasset
+    set userasset_id = #{record.userassetId,jdbcType=INTEGER},
+      userasset_time = #{record.userassetTime,jdbcType=TIMESTAMP},
+      userassetpeople_id = #{record.userassetpeopleId,jdbcType=INTEGER},
+      userasset_level = #{record.userassetLevel,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.UserAsset" >
+    update userasset
+    <set >
+      <if test="userassetTime != null" >
+        userasset_time = #{userassetTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userassetpeopleId != null" >
+        userassetpeople_id = #{userassetpeopleId,jdbcType=INTEGER},
+      </if>
+      <if test="userassetLevel != null" >
+        userasset_level = #{userassetLevel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where userasset_id = #{userassetId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.UserAsset" >
+    update userasset
+    set userasset_time = #{userassetTime,jdbcType=TIMESTAMP},
+      userassetpeople_id = #{userassetpeopleId,jdbcType=INTEGER},
+      userasset_level = #{userassetLevel,jdbcType=INTEGER}
+    where userasset_id = #{userassetId,jdbcType=INTEGER}
+  </update>
+</mapper>

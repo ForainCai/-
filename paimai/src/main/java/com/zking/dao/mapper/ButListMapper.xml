@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.dao.ButListMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.pojo.ButList" >
+    <id column="buylist_id" property="buylistId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="buylist_price" property="buylistPrice" jdbcType="DOUBLE" />
+    <result column="buylist_man" property="buylistMan" jdbcType="INTEGER" />
+    <result column="buylist_starttime" property="buylistStarttime" jdbcType="TIMESTAMP" />
+    <result column="buylist_buytime" property="buylistBuytime" jdbcType="TIMESTAMP" />
+    <result column="buylist_endtime" property="buylistEndtime" jdbcType="TIMESTAMP" />
+    <result column="buylist_over" property="buylistOver" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    buylist_id, goods_id, buylist_price, buylist_man, buylist_starttime, buylist_buytime, 
+    buylist_endtime, buylist_over, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zking.pojo.ButListExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from buylist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from buylist
+    where buylist_id = #{buylistId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from buylist
+    where buylist_id = #{buylistId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zking.pojo.ButListExample" >
+    delete from buylist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.ButList" >
+    insert into buylist (buylist_id, goods_id, buylist_price, 
+      buylist_man, buylist_starttime, buylist_buytime, 
+      buylist_endtime, buylist_over, status
+      )
+    values (#{buylistId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{buylistPrice,jdbcType=DOUBLE}, 
+      #{buylistMan,jdbcType=INTEGER}, #{buylistStarttime,jdbcType=TIMESTAMP}, #{buylistBuytime,jdbcType=TIMESTAMP}, 
+      #{buylistEndtime,jdbcType=TIMESTAMP}, #{buylistOver,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.ButList" >
+    insert into buylist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="buylistId != null" >
+        buylist_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="buylistPrice != null" >
+        buylist_price,
+      </if>
+      <if test="buylistMan != null" >
+        buylist_man,
+      </if>
+      <if test="buylistStarttime != null" >
+        buylist_starttime,
+      </if>
+      <if test="buylistBuytime != null" >
+        buylist_buytime,
+      </if>
+      <if test="buylistEndtime != null" >
+        buylist_endtime,
+      </if>
+      <if test="buylistOver != null" >
+        buylist_over,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="buylistId != null" >
+        #{buylistId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="buylistPrice != null" >
+        #{buylistPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="buylistMan != null" >
+        #{buylistMan,jdbcType=INTEGER},
+      </if>
+      <if test="buylistStarttime != null" >
+        #{buylistStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buylistBuytime != null" >
+        #{buylistBuytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buylistEndtime != null" >
+        #{buylistEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buylistOver != null" >
+        #{buylistOver,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zking.pojo.ButListExample" resultType="java.lang.Integer" >
+    select count(*) from buylist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update buylist
+    <set >
+      <if test="record.buylistId != null" >
+        buylist_id = #{record.buylistId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsId != null" >
+        goods_id = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.buylistPrice != null" >
+        buylist_price = #{record.buylistPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.buylistMan != null" >
+        buylist_man = #{record.buylistMan,jdbcType=INTEGER},
+      </if>
+      <if test="record.buylistStarttime != null" >
+        buylist_starttime = #{record.buylistStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.buylistBuytime != null" >
+        buylist_buytime = #{record.buylistBuytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.buylistEndtime != null" >
+        buylist_endtime = #{record.buylistEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.buylistOver != null" >
+        buylist_over = #{record.buylistOver,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update buylist
+    set buylist_id = #{record.buylistId,jdbcType=INTEGER},
+      goods_id = #{record.goodsId,jdbcType=INTEGER},
+      buylist_price = #{record.buylistPrice,jdbcType=DOUBLE},
+      buylist_man = #{record.buylistMan,jdbcType=INTEGER},
+      buylist_starttime = #{record.buylistStarttime,jdbcType=TIMESTAMP},
+      buylist_buytime = #{record.buylistBuytime,jdbcType=TIMESTAMP},
+      buylist_endtime = #{record.buylistEndtime,jdbcType=TIMESTAMP},
+      buylist_over = #{record.buylistOver,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.ButList" >
+    update buylist
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="buylistPrice != null" >
+        buylist_price = #{buylistPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="buylistMan != null" >
+        buylist_man = #{buylistMan,jdbcType=INTEGER},
+      </if>
+      <if test="buylistStarttime != null" >
+        buylist_starttime = #{buylistStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buylistBuytime != null" >
+        buylist_buytime = #{buylistBuytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buylistEndtime != null" >
+        buylist_endtime = #{buylistEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buylistOver != null" >
+        buylist_over = #{buylistOver,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where buylist_id = #{buylistId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.ButList" >
+    update buylist
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      buylist_price = #{buylistPrice,jdbcType=DOUBLE},
+      buylist_man = #{buylistMan,jdbcType=INTEGER},
+      buylist_starttime = #{buylistStarttime,jdbcType=TIMESTAMP},
+      buylist_buytime = #{buylistBuytime,jdbcType=TIMESTAMP},
+      buylist_endtime = #{buylistEndtime,jdbcType=TIMESTAMP},
+      buylist_over = #{buylistOver,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where buylist_id = #{buylistId,jdbcType=INTEGER}
+  </update>
+</mapper>
