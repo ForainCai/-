@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-<properties resource="jdbc.properties" />
-  <context id="context1">
-  <commentGenerator> 
-            <!-- 是否去除自动生成的注释 true：是 ： false:否 --> 
-            <property name="suppressAllComments" value="true" /> 
-        </commentGenerator>
-    <jdbcConnection connectionURL="${url}" driverClass="${driverClassName}" password="${password}" userId="${username}" />
-    <javaModelGenerator targetPackage="com.zking.pojo" targetProject="src/main/java" />
-    <sqlMapGenerator targetPackage="com.zking.dao.mapper" targetProject="src/main/java" />
-    <javaClientGenerator targetPackage="com.zking.dao" targetProject="src/main/java" type="XMLMAPPER" />
-	<table tableName="buylist" domainObjectName="ButList"></table>
-	<table tableName="collect" domainObjectName="Collect"></table>
-	<table tableName="goods" domainObjectName="Goods"></table>
-	<table tableName="goodstype" domainObjectName="GoodStype"></table>
-	<table tableName="trade" domainObjectName="Trade"></table>
-	<table tableName="userasset" domainObjectName="UserAsset"></table>
-	<table tableName="usercredit" domainObjectName="UserCredit"></table>
-	<table tableName="userinfo" domainObjectName="UserInfo"></table>
-	<table tableName="usertype" domainObjectName="UserType"></table>
-  </context>
+	<properties resource="jdbc.properties" />
+	<context id="context1">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<jdbcConnection connectionURL="${url}" driverClass="${driverClassName}"
+			password="${password}" userId="${username}" />
+		<javaModelGenerator targetPackage="com.zking.pojo"
+			targetProject="src/main/java" />
+		<sqlMapGenerator targetPackage="com.zking.dao.mapper"
+			targetProject="src/main/java" />
+		<javaClientGenerator targetPackage="com.zking.dao"
+			targetProject="src/main/java" type="XMLMAPPER" />
+		<table tableName="buylist" domainObjectName="ButList"></table>
+		<table tableName="collect" domainObjectName="Collect"></table>
+		<table tableName="goods" domainObjectName="Goods"></table>
+		<table tableName="goodstype" domainObjectName="GoodStype"></table>
+		<table tableName="trade" domainObjectName="Trade"></table>
+		<table tableName="userasset" domainObjectName="UserAsset"></table>
+		<table tableName="usercredit" domainObjectName="UserCredit"></table>
+		<table tableName="userinfo" domainObjectName="UserInfo"></table>
+		<table tableName="usertype" domainObjectName="UserType"></table>
+	</context>
 </generatorConfiguration>

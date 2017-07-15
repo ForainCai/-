@@ -1,304 +1,316 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zking.dao.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.zking.pojo.Goods" >
-    <id column="goods_id" property="goodsId" jdbcType="INTEGER" />
-    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
-    <result column="goods_place" property="goodsPlace" jdbcType="VARCHAR" />
-    <result column="goodstype_id" property="goodstypeId" jdbcType="INTEGER" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="goods_status" property="goodsStatus" jdbcType="INTEGER" />
-    <result column="gods_info" property="godsInfo" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.zking.pojo.Goods" extends="BaseResultMap" >
-    <result column="goods_picture" property="goodsPicture" jdbcType="LONGVARBINARY" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    goods_id, goods_name, goods_place, goodstype_id, uid, goods_status, gods_info
-  </sql>
-  <sql id="Blob_Column_List" >
-    goods_picture
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.zking.pojo.GoodsExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from goods
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zking.pojo.GoodsExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from goods
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from goods
-    where goods_id = #{goodsId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from goods
-    where goods_id = #{goodsId,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.zking.pojo.GoodsExample" >
-    delete from goods
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.zking.pojo.Goods" >
-    insert into goods (goods_id, goods_name, goods_place, 
-      goodstype_id, uid, goods_status, 
-      gods_info, goods_picture)
-    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPlace,jdbcType=VARCHAR}, 
-      #{goodstypeId,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{goodsStatus,jdbcType=INTEGER}, 
-      #{godsInfo,jdbcType=VARCHAR}, #{goodsPicture,jdbcType=LONGVARBINARY})
-  </insert>
-  <insert id="insertSelective" parameterType="com.zking.pojo.Goods" >
-    insert into goods
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="goodsId != null" >
-        goods_id,
-      </if>
-      <if test="goodsName != null" >
-        goods_name,
-      </if>
-      <if test="goodsPlace != null" >
-        goods_place,
-      </if>
-      <if test="goodstypeId != null" >
-        goodstype_id,
-      </if>
-      <if test="uid != null" >
-        uid,
-      </if>
-      <if test="goodsStatus != null" >
-        goods_status,
-      </if>
-      <if test="godsInfo != null" >
-        gods_info,
-      </if>
-      <if test="goodsPicture != null" >
-        goods_picture,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="goodsId != null" >
-        #{goodsId,jdbcType=INTEGER},
-      </if>
-      <if test="goodsName != null" >
-        #{goodsName,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsPlace != null" >
-        #{goodsPlace,jdbcType=VARCHAR},
-      </if>
-      <if test="goodstypeId != null" >
-        #{goodstypeId,jdbcType=INTEGER},
-      </if>
-      <if test="uid != null" >
-        #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="goodsStatus != null" >
-        #{goodsStatus,jdbcType=INTEGER},
-      </if>
-      <if test="godsInfo != null" >
-        #{godsInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsPicture != null" >
-        #{goodsPicture,jdbcType=LONGVARBINARY},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.zking.pojo.GoodsExample" resultType="java.lang.Integer" >
-    select count(*) from goods
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update goods
-    <set >
-      <if test="record.goodsId != null" >
-        goods_id = #{record.goodsId,jdbcType=INTEGER},
-      </if>
-      <if test="record.goodsName != null" >
-        goods_name = #{record.goodsName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.goodsPlace != null" >
-        goods_place = #{record.goodsPlace,jdbcType=VARCHAR},
-      </if>
-      <if test="record.goodstypeId != null" >
-        goodstype_id = #{record.goodstypeId,jdbcType=INTEGER},
-      </if>
-      <if test="record.uid != null" >
-        uid = #{record.uid,jdbcType=INTEGER},
-      </if>
-      <if test="record.goodsStatus != null" >
-        goods_status = #{record.goodsStatus,jdbcType=INTEGER},
-      </if>
-      <if test="record.godsInfo != null" >
-        gods_info = #{record.godsInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="record.goodsPicture != null" >
-        goods_picture = #{record.goodsPicture,jdbcType=LONGVARBINARY},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update goods
-    set goods_id = #{record.goodsId,jdbcType=INTEGER},
-      goods_name = #{record.goodsName,jdbcType=VARCHAR},
-      goods_place = #{record.goodsPlace,jdbcType=VARCHAR},
-      goodstype_id = #{record.goodstypeId,jdbcType=INTEGER},
-      uid = #{record.uid,jdbcType=INTEGER},
-      goods_status = #{record.goodsStatus,jdbcType=INTEGER},
-      gods_info = #{record.godsInfo,jdbcType=VARCHAR},
-      goods_picture = #{record.goodsPicture,jdbcType=LONGVARBINARY}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update goods
-    set goods_id = #{record.goodsId,jdbcType=INTEGER},
-      goods_name = #{record.goodsName,jdbcType=VARCHAR},
-      goods_place = #{record.goodsPlace,jdbcType=VARCHAR},
-      goodstype_id = #{record.goodstypeId,jdbcType=INTEGER},
-      uid = #{record.uid,jdbcType=INTEGER},
-      goods_status = #{record.goodsStatus,jdbcType=INTEGER},
-      gods_info = #{record.godsInfo,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.Goods" >
-    update goods
-    <set >
-      <if test="goodsName != null" >
-        goods_name = #{goodsName,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsPlace != null" >
-        goods_place = #{goodsPlace,jdbcType=VARCHAR},
-      </if>
-      <if test="goodstypeId != null" >
-        goodstype_id = #{goodstypeId,jdbcType=INTEGER},
-      </if>
-      <if test="uid != null" >
-        uid = #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="goodsStatus != null" >
-        goods_status = #{goodsStatus,jdbcType=INTEGER},
-      </if>
-      <if test="godsInfo != null" >
-        gods_info = #{godsInfo,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsPicture != null" >
-        goods_picture = #{goodsPicture,jdbcType=LONGVARBINARY},
-      </if>
-    </set>
-    where goods_id = #{goodsId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zking.pojo.Goods" >
-    update goods
-    set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_place = #{goodsPlace,jdbcType=VARCHAR},
-      goodstype_id = #{goodstypeId,jdbcType=INTEGER},
-      uid = #{uid,jdbcType=INTEGER},
-      goods_status = #{goodsStatus,jdbcType=INTEGER},
-      gods_info = #{godsInfo,jdbcType=VARCHAR},
-      goods_picture = #{goodsPicture,jdbcType=LONGVARBINARY}
-    where goods_id = #{goodsId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.Goods" >
-    update goods
-    set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_place = #{goodsPlace,jdbcType=VARCHAR},
-      goodstype_id = #{goodstypeId,jdbcType=INTEGER},
-      uid = #{uid,jdbcType=INTEGER},
-      goods_status = #{goodsStatus,jdbcType=INTEGER},
-      gods_info = #{godsInfo,jdbcType=VARCHAR}
-    where goods_id = #{goodsId,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.zking.dao.GoodsMapper">
+	<resultMap id="BaseResultMap" type="com.zking.pojo.Goods">
+		<id column="goods_id" property="goodsId" jdbcType="INTEGER" />
+		<result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+		<result column="goods_place" property="goodsPlace" jdbcType="VARCHAR" />
+		<result column="goodstype_id" property="goodstypeId" jdbcType="INTEGER" />
+		<result column="uid" property="uid" jdbcType="INTEGER" />
+		<result column="goods_status" property="goodsStatus" jdbcType="INTEGER" />
+		<result column="gods_info" property="godsInfo" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.zking.pojo.Goods"
+		extends="BaseResultMap">
+		<result column="goods_picture" property="goodsPicture"
+			jdbcType="LONGVARBINARY" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		goods_id, goods_name, goods_place, goodstype_id, uid, goods_status, gods_info
+	</sql>
+	<sql id="Blob_Column_List">
+		goods_picture
+	</sql>
+	<select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
+		parameterType="com.zking.pojo.GoodsExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from goods
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.zking.pojo.GoodsExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from goods
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from goods
+		where goods_id = #{goodsId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from goods
+		where goods_id = #{goodsId,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.zking.pojo.GoodsExample">
+		delete from goods
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.zking.pojo.Goods">
+		insert into goods (goods_id, goods_name, goods_place,
+		goodstype_id, uid, goods_status,
+		gods_info, goods_picture)
+		values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR},
+		#{goodsPlace,jdbcType=VARCHAR},
+		#{goodstypeId,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{goodsStatus,jdbcType=INTEGER},
+		#{godsInfo,jdbcType=VARCHAR}, #{goodsPicture,jdbcType=LONGVARBINARY})
+	</insert>
+	<insert id="insertSelective" parameterType="com.zking.pojo.Goods">
+		insert into goods
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="goodsId != null">
+				goods_id,
+			</if>
+			<if test="goodsName != null">
+				goods_name,
+			</if>
+			<if test="goodsPlace != null">
+				goods_place,
+			</if>
+			<if test="goodstypeId != null">
+				goodstype_id,
+			</if>
+			<if test="uid != null">
+				uid,
+			</if>
+			<if test="goodsStatus != null">
+				goods_status,
+			</if>
+			<if test="godsInfo != null">
+				gods_info,
+			</if>
+			<if test="goodsPicture != null">
+				goods_picture,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="goodsId != null">
+				#{goodsId,jdbcType=INTEGER},
+			</if>
+			<if test="goodsName != null">
+				#{goodsName,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsPlace != null">
+				#{goodsPlace,jdbcType=VARCHAR},
+			</if>
+			<if test="goodstypeId != null">
+				#{goodstypeId,jdbcType=INTEGER},
+			</if>
+			<if test="uid != null">
+				#{uid,jdbcType=INTEGER},
+			</if>
+			<if test="goodsStatus != null">
+				#{goodsStatus,jdbcType=INTEGER},
+			</if>
+			<if test="godsInfo != null">
+				#{godsInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsPicture != null">
+				#{goodsPicture,jdbcType=LONGVARBINARY},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.zking.pojo.GoodsExample"
+		resultType="java.lang.Integer">
+		select count(*) from goods
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update goods
+		<set>
+			<if test="record.goodsId != null">
+				goods_id = #{record.goodsId,jdbcType=INTEGER},
+			</if>
+			<if test="record.goodsName != null">
+				goods_name = #{record.goodsName,jdbcType=VARCHAR},
+			</if>
+			<if test="record.goodsPlace != null">
+				goods_place = #{record.goodsPlace,jdbcType=VARCHAR},
+			</if>
+			<if test="record.goodstypeId != null">
+				goodstype_id = #{record.goodstypeId,jdbcType=INTEGER},
+			</if>
+			<if test="record.uid != null">
+				uid = #{record.uid,jdbcType=INTEGER},
+			</if>
+			<if test="record.goodsStatus != null">
+				goods_status = #{record.goodsStatus,jdbcType=INTEGER},
+			</if>
+			<if test="record.godsInfo != null">
+				gods_info = #{record.godsInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="record.goodsPicture != null">
+				goods_picture = #{record.goodsPicture,jdbcType=LONGVARBINARY},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExampleWithBLOBs" parameterType="map">
+		update goods
+		set goods_id = #{record.goodsId,jdbcType=INTEGER},
+		goods_name = #{record.goodsName,jdbcType=VARCHAR},
+		goods_place = #{record.goodsPlace,jdbcType=VARCHAR},
+		goodstype_id = #{record.goodstypeId,jdbcType=INTEGER},
+		uid = #{record.uid,jdbcType=INTEGER},
+		goods_status = #{record.goodsStatus,jdbcType=INTEGER},
+		gods_info = #{record.godsInfo,jdbcType=VARCHAR},
+		goods_picture = #{record.goodsPicture,jdbcType=LONGVARBINARY}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update goods
+		set goods_id = #{record.goodsId,jdbcType=INTEGER},
+		goods_name = #{record.goodsName,jdbcType=VARCHAR},
+		goods_place = #{record.goodsPlace,jdbcType=VARCHAR},
+		goodstype_id = #{record.goodstypeId,jdbcType=INTEGER},
+		uid = #{record.uid,jdbcType=INTEGER},
+		goods_status = #{record.goodsStatus,jdbcType=INTEGER},
+		gods_info = #{record.godsInfo,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.Goods">
+		update goods
+		<set>
+			<if test="goodsName != null">
+				goods_name = #{goodsName,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsPlace != null">
+				goods_place = #{goodsPlace,jdbcType=VARCHAR},
+			</if>
+			<if test="goodstypeId != null">
+				goodstype_id = #{goodstypeId,jdbcType=INTEGER},
+			</if>
+			<if test="uid != null">
+				uid = #{uid,jdbcType=INTEGER},
+			</if>
+			<if test="goodsStatus != null">
+				goods_status = #{goodsStatus,jdbcType=INTEGER},
+			</if>
+			<if test="godsInfo != null">
+				gods_info = #{godsInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsPicture != null">
+				goods_picture = #{goodsPicture,jdbcType=LONGVARBINARY},
+			</if>
+		</set>
+		where goods_id = #{goodsId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zking.pojo.Goods">
+		update goods
+		set goods_name = #{goodsName,jdbcType=VARCHAR},
+		goods_place = #{goodsPlace,jdbcType=VARCHAR},
+		goodstype_id = #{goodstypeId,jdbcType=INTEGER},
+		uid = #{uid,jdbcType=INTEGER},
+		goods_status = #{goodsStatus,jdbcType=INTEGER},
+		gods_info = #{godsInfo,jdbcType=VARCHAR},
+		goods_picture = #{goodsPicture,jdbcType=LONGVARBINARY}
+		where goods_id = #{goodsId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.zking.pojo.Goods">
+		update goods
+		set goods_name = #{goodsName,jdbcType=VARCHAR},
+		goods_place = #{goodsPlace,jdbcType=VARCHAR},
+		goodstype_id = #{goodstypeId,jdbcType=INTEGER},
+		uid = #{uid,jdbcType=INTEGER},
+		goods_status = #{goodsStatus,jdbcType=INTEGER},
+		gods_info = #{godsInfo,jdbcType=VARCHAR}
+		where goods_id = #{goodsId,jdbcType=INTEGER}
+	</update>
 </mapper>
