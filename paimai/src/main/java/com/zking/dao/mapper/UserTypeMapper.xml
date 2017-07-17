@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.dao.UserTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.pojo.UserType" >
+    <id column="usertype_id" property="usertypeId" jdbcType="INTEGER" />
+    <result column="usertype_name" property="usertypeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    usertype_id, usertype_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from usertype
+    where usertype_id = #{usertypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from usertype
+    where usertype_id = #{usertypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.UserType" >
+    insert into usertype (usertype_id, usertype_name)
+    values (#{usertypeId,jdbcType=INTEGER}, #{usertypeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.UserType" >
+    insert into usertype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="usertypeId != null" >
+        usertype_id,
+      </if>
+      <if test="usertypeName != null" >
+        usertype_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="usertypeId != null" >
+        #{usertypeId,jdbcType=INTEGER},
+      </if>
+      <if test="usertypeName != null" >
+        #{usertypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.UserType" >
+    update usertype
+    <set >
+      <if test="usertypeName != null" >
+        usertype_name = #{usertypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where usertype_id = #{usertypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.UserType" >
+    update usertype
+    set usertype_name = #{usertypeName,jdbcType=VARCHAR}
+    where usertype_id = #{usertypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

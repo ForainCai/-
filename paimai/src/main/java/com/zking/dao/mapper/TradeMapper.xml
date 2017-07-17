@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.dao.TradeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.pojo.Trade" >
+    <id column="trade_id" property="tradeId" jdbcType="INTEGER" />
+    <result column="trade_buy_id" property="tradeBuyId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="trade_time" property="tradeTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    trade_id, trade_buy_id, goods_id, trade_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from trade
+    where trade_id = #{tradeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from trade
+    where trade_id = #{tradeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.Trade" >
+    insert into trade (trade_id, trade_buy_id, goods_id, 
+      trade_time)
+    values (#{tradeId,jdbcType=INTEGER}, #{tradeBuyId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
+      #{tradeTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.Trade" >
+    insert into trade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tradeId != null" >
+        trade_id,
+      </if>
+      <if test="tradeBuyId != null" >
+        trade_buy_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="tradeTime != null" >
+        trade_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tradeId != null" >
+        #{tradeId,jdbcType=INTEGER},
+      </if>
+      <if test="tradeBuyId != null" >
+        #{tradeBuyId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="tradeTime != null" >
+        #{tradeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.Trade" >
+    update trade
+    <set >
+      <if test="tradeBuyId != null" >
+        trade_buy_id = #{tradeBuyId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="tradeTime != null" >
+        trade_time = #{tradeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where trade_id = #{tradeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.Trade" >
+    update trade
+    set trade_buy_id = #{tradeBuyId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      trade_time = #{tradeTime,jdbcType=TIMESTAMP}
+    where trade_id = #{tradeId,jdbcType=INTEGER}
+  </update>
+</mapper>
