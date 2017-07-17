@@ -26,9 +26,7 @@
             	<h1 class="logo">Ama.<span>Admin</span></h1>
 				<span class="slogan">管理员登入</span>
             </div><!--logo-->
-            <div>
-            	<span class="slogan" id="showTop"></span>
-            </div>
+           
             <br clear="all" /><br />
             <form id="login" action="<%=basePath %>manager/checklogin.do" method="post">
             	
@@ -57,8 +55,7 @@
 <script type="text/javascript">
 function sub() {
 	if ($("input[name=username]").val()==""||$("input[name=password]").val()=="") {
-		 $("#showTop").val("用户名或者密码为空，请重新填写");
-		 $("#showTop").css("color","red");
+		 alert("用户名或者密码为空，请重新填写")
         return false;
     }
 	
