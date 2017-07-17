@@ -11,14 +11,6 @@
     <javaModelGenerator targetPackage="com.zking.pojo" targetProject="src/main/java" />
     <sqlMapGenerator targetPackage="com.zking.dao.mapper" targetProject="src/main/java" />
     <javaClientGenerator targetPackage="com.zking.dao" targetProject="src/main/java" type="XMLMAPPER" />
-	<table tableName="buylist" domainObjectName="ButList"></table>
-	<table tableName="collect" domainObjectName="Collect"></table>
-	<table tableName="goods" domainObjectName="Goods"></table>
-	<table tableName="goodstype" domainObjectName="GoodStype"></table>
-	<table tableName="trade" domainObjectName="Trade"></table>
-	<table tableName="userasset" domainObjectName="UserAsset"></table>
-	<table tableName="usercredit" domainObjectName="UserCredit"></table>
-	<table tableName="userinfo" domainObjectName="UserInfo"></table>
-	<table tableName="usertype" domainObjectName="UserType"></table>
+	<table tableName=""></table>
   </context>
 </generatorConfiguration>
