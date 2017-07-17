@@ -36,6 +36,10 @@ public class ToolContorller extends BaseController {
 		Tools.getVerifyImage(request, response);
 	}
 	
+	@RequestMapping("Demo")
+	public String demo(){
+		return "Demo";
+	}
 	
 
 }
