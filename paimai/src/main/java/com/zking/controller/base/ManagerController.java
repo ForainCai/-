@@ -13,4 +13,9 @@ public class ManagerController {
 	public ModelAndView tologin( ){
 		return new ModelAndView("houjsp/login");
 	}
+	@RequestMapping("/checklogin")
+	public ModelAndView checklogin( ){
+		
+		return new ModelAndView("houjsp/login");
+	}
 }
