@@ -1,6 +1,6 @@
 package com.zking.pojo;
 
-public class GoodStype {
+public class GoodsType {
     private Integer goodstypeId;
 
     private String goodstypeName;

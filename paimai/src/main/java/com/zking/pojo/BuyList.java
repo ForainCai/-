@@ -2,7 +2,7 @@ package com.zking.pojo;
 
 import java.util.Date;
 
-public class ButList {
+public class BuyList {
     private Integer buylistId;
 
     private Integer goodsId;
