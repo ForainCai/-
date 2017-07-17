@@ -27,7 +27,7 @@ public class ExampleController extends BaseController{
 	
 	@RequestMapping(value="/1")
 	public Object test1(){
-		return "Home";
+		return "Login/province";
 	}
 	
 	@RequestMapping(value="/2", produces = "application/json; charset=utf-8")
