@@ -28,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <!-- logo -->
 	<div class="logo">
-		<h1 style="font-size:36px">XXX拍卖行</h1>
+		<h1 style="font-size:36px">XXX拍卖网</h1>
 	</div>
 	<!--end-logo-->
 <!--标题按钮-->
@@ -79,6 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="clearfix"> </div>
 	</div>
+	<!--end轮播图-->
 	<!--Slider-Starts-Here-->
 				<script src="<%=basePath %>qianCss/js/responsiveslides.min.js"></script>
 				<script>
@@ -101,7 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			    });
 			  </script>
-			<!--end轮播图-->
+	<!--Slider-Starts-Here-->
 	<!-- 详情信息图 -->		
 	<div class="about"> 
 		<div class="container">

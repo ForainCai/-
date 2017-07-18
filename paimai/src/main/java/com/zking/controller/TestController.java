@@ -10,6 +10,14 @@ import com.zking.controller.base.BaseController;
 public class TestController extends BaseController{
 	@RequestMapping("index")
 	public String index(){
-		return "login/index";
+		return "qianjsp/index";
+	}
+//	@RequestMapping("province")
+//	public String province(){
+//		return "login/province";
+//	}
+	@RequestMapping("single")
+	public String single(){
+		return "qianjsp/Single";
 	}
 }
