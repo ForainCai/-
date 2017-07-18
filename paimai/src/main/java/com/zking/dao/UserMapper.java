@@ -14,4 +14,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+    
+    //通过username和password查找管理员
+  	public User findByUsernamePasswod(User u);
 }

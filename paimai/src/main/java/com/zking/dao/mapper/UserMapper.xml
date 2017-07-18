@@ -138,4 +138,7 @@
       userasset_id = #{userassetId,jdbcType=INTEGER}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
+  <select id="findByUsernamePasswod" resultType="com.zking.pojo.User">
+  	select * from user where username=#{username} and password=#{password} and usertype=#{usertype}
+  </select>
 </mapper>
