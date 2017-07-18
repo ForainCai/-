@@ -11,6 +11,7 @@ public class TestController extends BaseController{
 	@RequestMapping("index")
 	public String index(){
 		return "qianjsp/index";
+<<<<<<< HEAD
 	}
 //	@RequestMapping("province")
 //	public String province(){
@@ -19,5 +20,7 @@ public class TestController extends BaseController{
 	@RequestMapping("single")
 	public String single(){
 		return "qianjsp/Single";
+=======
+>>>>>>> branch 'master' of https://github.com/findTruth/paimai.git
 	}
 }
