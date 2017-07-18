@@ -26,10 +26,7 @@
             	<h1 class="logo">Ama.<span>Admin</span></h1>
 				<span class="slogan">管理员登入</span>
             </div><!--logo-->
-           
             <br clear="all" /><br />
-            <form id="login">
-            	
                 <div class="username">
                 	<div class="usernameinner">
                     	<input type="text" name="username" id="username" placeholder="username"/>
@@ -46,7 +43,6 @@
                 
                 <div class="keep"><input type="checkbox" /> 记住密码</div>
             
-            </form>
             
         </div><!--loginboxinner-->
     </div><!--loginbox-->
@@ -55,8 +51,8 @@
 <script type="text/javascript">
 $("#login2").click(
 		function() {
-			var username = $("input[name=username]").val();
-			var password = $("input[name=password]").val();
+			var username = $("#username").val();
+			var password = $("#password").val();
 			if (username == "" || password == "") {
 				alert("账号或密码不能为空");
 			}else {
