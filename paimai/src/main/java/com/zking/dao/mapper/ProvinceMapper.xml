@@ -14,6 +14,17 @@
     from province
     where pid = #{pid,jdbcType=INTEGER}
   </select>
+  
+  
+  <!-- 查询所有省份 -->
+   <select id="findAllProvince" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from province
+  </select>
+  
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from province
     where pid = #{pid,jdbcType=INTEGER}
