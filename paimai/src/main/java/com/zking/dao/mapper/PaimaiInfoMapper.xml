@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.dao.PaimaiInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.pojo.PaimaiInfo" >
+    <id column="pai_id" property="paiId" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="buylist_id" property="buylistId" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pai_id, money, uid, buylist_id, time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from paimaiinfo
+    where pai_id = #{paiId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from paimaiinfo
+    where pai_id = #{paiId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.PaimaiInfo" >
+    insert into paimaiinfo (pai_id, money, uid, 
+      buylist_id, time)
+    values (#{paiId,jdbcType=INTEGER}, #{money,jdbcType=DOUBLE}, #{uid,jdbcType=INTEGER}, 
+      #{buylistId,jdbcType=INTEGER}, now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.PaimaiInfo" >
+    insert into paimaiinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="paiId != null" >
+        pai_id,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="buylistId != null" >
+        buylist_id,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="paiId != null" >
+        #{paiId,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="buylistId != null" >
+        #{buylistId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.PaimaiInfo" >
+    update paimaiinfo
+    <set >
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="buylistId != null" >
+        buylist_id = #{buylistId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pai_id = #{paiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.PaimaiInfo" >
+    update paimaiinfo
+    set money = #{money,jdbcType=DOUBLE},
+      uid = #{uid,jdbcType=INTEGER},
+      buylist_id = #{buylistId,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP}
+    where pai_id = #{paiId,jdbcType=INTEGER}
+  </update>
+</mapper>
