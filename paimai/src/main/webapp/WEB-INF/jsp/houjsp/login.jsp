@@ -16,7 +16,7 @@
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.uniform.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/custom/general.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/custom/index.js"></script>
-
+<script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery-1.7.min.js"></script>
 </head>
 <body class="loginpage">
 	<div class="loginbox">
@@ -28,7 +28,7 @@
             </div><!--logo-->
            
             <br clear="all" /><br />
-            <form id="login" action="<%=basePath %>manager/checklogin.do" method="post">
+            <form id="login">
             	
                 <div class="username">
                 	<div class="usernameinner">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 
-                <button onclick="return sub()">登录</button>
+                <button id="login2">登录</button>
                 
                 <div class="keep"><input type="checkbox" /> 记住密码</div>
             
@@ -53,14 +53,32 @@
 
 </body>
 <script type="text/javascript">
-function sub() {
-	if ($("input[name=username]").val()==""||$("input[name=password]").val()=="") {
-		 alert("用户名或者密码为空，请重新填写")
-        return false;
-    }
-	
-	return true;
-}
+$("#login2").click(
+		function() {
+			var username = $("input[name=username]").val();
+			var password = $("input[name=password]").val();
+			if (username == "" || password == "") {
+				alert("账号或密码不能为空");
+			}else {
+				$.ajax({
+					type : 'post',
+					dataType : 'json',
+					url : '<%=basePath%>manager/checklogin?username=' + username + "&password=" + password,
+					success : function(data) {					
+						
+						alert(data.msg);
+						
+						
+						if (data.msg != -1) {
+							alert("成功登陆");	
+							window.location.href="<%=basePath%>manager/toindex"; 
+						}else{
+							alert("账号或密码错误！");
+						}
+					}
+				});
+			}
+
+		});
 </script>
-<script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery-1.7.min.js"></script>
 </html>
