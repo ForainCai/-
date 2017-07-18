@@ -7,87 +7,6 @@
 
 <%@ include file="head.jsp"%>
 
-<<<<<<< HEAD
-
-
-<title></title>
-</head>
-<body onload="change();">
-
-	<div class="ckeckout">
-		<div class="container">
-
-			<div class="ckeck-top heading">
-				<h3>商品浏览</h3>
-			</div>
-
-			<ul class="memenu skyblue">
-				<li class="grid"><button href='index.html' class='btn-default'
-						style='width: 60px; height: 30px' onclick='test(this)' value="房产">房产</button></li>
-				<li class="grid"><button class="btn-default"
-						style="position: relative; width: 60px; height: 30px;"
-						onclick="test(this)">珠宝</button></li>
-				<li class="grid"><button class="btn-default"
-						style="width: 60px; height: 30px" onclick="test(this)">汽车</button></li>
-				<li class="grid"><button class="btn-default"
-						style="width: 80px; height: 30px" onclick="test(this)">奢侈品</button></li>
-				<li class="grid"><button class="btn-default"
-						style="width: 60px; height: 30px" onclick="test(this)">古董</button></li>
-				<li class="grid"><button href="contact.html"
-						class="btn-default" style="width: 60px; height: 30px"
-						onclick="test(this)">杂项</button></li>
-			</ul>
-
-			<div class="ckeckout-top">
-				<div class="cart-items">
-					<div class="in-check">
-							<span>选择省份</span>
-							<select onchange="change(this)" id="sel">
-							</select>
-							<span>长沙市</span>&nbsp;
-							<span>湘潭市</span>&nbsp;
-							<span>株洲市</span>&nbsp;
-
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-<script type="text/javascript" src="<%=basePath %>qianCss/js/jquery-2.0.0.min.js"></script>
-<script type="text/javascript">
-		function test(data) {
-
-			alert('弹出');
-		}
-		
-		function change(){
-			
-			var sel = $("#sel").val();
-			
-				$.ajax({
-					url:"city/findAllProvince",
-				    type:"post",
-				    dataType:"json",
-				    success:function(msg){
-				    	//获取select 标签
-				    	var sel = $("#sel");
-				    	// 清空
-				    	sel.empty();
-				    	for(var i=0;i<msg.length;i++){
-				    		var op = $("<option  value='"+msg[i].pid+"'>"+msg[i].pname+"</option>");
-				    	    sel.append(op);
-				    	}
-				    	
-				    }
-				});
-			}
-			
-			
-			
-=======
 <style type="text/css">
 a {
 	text-decoration: none;
@@ -98,23 +17,45 @@ a {
 </head>
 <body onload="Load();">
 
+<!--标题按钮-->
+	<div class="header-bottom">
+		<div class="container">
+			<div class="header">
+				<div class="col-md-9 header-left">
+				<div class="top-nav">
+					<ul class="memenu skyblue">
+						<li class="grid"><a href="#">房产</a></li>
+						<li class="grid"><a href="#">珠宝</a></li>
+						<li class="grid"><a href="#">汽车</a></li>
+						<li class="grid"><a href="#">奢侈品</a></li>
+						<li class="grid"><a href="#">古董</a></li>
+						<li class="grid"><a href="#">其他</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="col-md-3 header-right"> 
+				<div class="search-bar">
+					<input type="text" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}">
+					<input type="submit" value="">
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+			</div>
+		</div>
+		</div>
 	<!--start-ckeckout-->
 	<div class="container">
 		<div class="ckeckout-top">
 			<div class="cart-items">
 				<div class="in-check">
 					<ul class="cart-header">
-
 						<span>省份</span><a id="choice" style="text-decoration:none;color:BLACK;cursor:pointer;margin-left: 1cm" onclick="choiceShen()">全国</a>
 						<br>
 						<br>
 						<table style="margin-left: 2cm">
 						        <tbody id="tablelist">
-						        
 						        </tbody>
-						     
-						     
-						     
 						</table>	
 						     <br><br>
 							<div id="ui"><span>城市：</span></div>
@@ -322,12 +263,12 @@ a {
 						}
 					});
 		}
+
 		function point(data) {
 
 			alert(data.text);
 
 		}
->>>>>>> branch 'master' of https://github.com/findTruth/paimai.git
 	</script>
 
 </body>
