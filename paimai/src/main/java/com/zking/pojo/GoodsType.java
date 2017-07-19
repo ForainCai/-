@@ -1,23 +1,23 @@
 package com.zking.pojo;
 
 public class GoodsType {
-    private Integer goodstypeId;
+    private Integer goodstype_id;
 
-    private String goodstypeName;
+    private String goodstype_name;
 
-    public Integer getGoodstypeId() {
-        return goodstypeId;
-    }
+	public Integer getGoodstype_id() {
+		return goodstype_id;
+	}
 
-    public void setGoodstypeId(Integer goodstypeId) {
-        this.goodstypeId = goodstypeId;
-    }
+	public void setGoodstype_id(Integer goodstype_id) {
+		this.goodstype_id = goodstype_id;
+	}
 
-    public String getGoodstypeName() {
-        return goodstypeName;
-    }
+	public String getGoodstype_name() {
+		return goodstype_name;
+	}
 
-    public void setGoodstypeName(String goodstypeName) {
-        this.goodstypeName = goodstypeName;
-    }
+	public void setGoodstype_name(String goodstype_name) {
+		this.goodstype_name = goodstype_name;
+	}
 }
