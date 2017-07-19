@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.zking.pojo.Goods" >
     <id column="goods_id" property="goodsId" jdbcType="INTEGER" />
     <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
-    <result column="goods_place" property="goodsPlace" jdbcType="VARCHAR" />
+    <result column="goods_place" property="goodsPlace" jdbcType="INTEGER" />
     <result column="goodstype_id" property="goodstypeId" jdbcType="INTEGER" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
     <result column="goods_status" property="goodsStatus" jdbcType="INTEGER" />
@@ -35,7 +35,7 @@
     insert into goods (goods_id, goods_name, goods_place, 
       goodstype_id, uid, goods_status, 
       gods_info, goods_picture)
-    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPlace,jdbcType=VARCHAR}, 
+    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPlace,jdbcType=INTEGER}, 
       #{goodstypeId,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{goodsStatus,jdbcType=INTEGER}, 
       #{godsInfo,jdbcType=VARCHAR}, #{goodsPicture,jdbcType=LONGVARBINARY})
   </insert>
@@ -75,7 +75,7 @@
         #{goodsName,jdbcType=VARCHAR},
       </if>
       <if test="goodsPlace != null" >
-        #{goodsPlace,jdbcType=VARCHAR},
+        #{goodsPlace,jdbcType=INTEGER},
       </if>
       <if test="goodstypeId != null" >
         #{goodstypeId,jdbcType=INTEGER},
@@ -101,7 +101,7 @@
         goods_name = #{goodsName,jdbcType=VARCHAR},
       </if>
       <if test="goodsPlace != null" >
-        goods_place = #{goodsPlace,jdbcType=VARCHAR},
+        goods_place = #{goodsPlace,jdbcType=INTEGER},
       </if>
       <if test="goodstypeId != null" >
         goodstype_id = #{goodstypeId,jdbcType=INTEGER},
@@ -124,7 +124,7 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zking.pojo.Goods" >
     update goods
     set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_place = #{goodsPlace,jdbcType=VARCHAR},
+      goods_place = #{goodsPlace,jdbcType=INTEGER},
       goodstype_id = #{goodstypeId,jdbcType=INTEGER},
       uid = #{uid,jdbcType=INTEGER},
       goods_status = #{goodsStatus,jdbcType=INTEGER},
@@ -135,7 +135,7 @@
   <update id="updateByPrimaryKey" parameterType="com.zking.pojo.Goods" >
     update goods
     set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_place = #{goodsPlace,jdbcType=VARCHAR},
+      goods_place = #{goodsPlace,jdbcType=INTEGER},
       goodstype_id = #{goodstypeId,jdbcType=INTEGER},
       uid = #{uid,jdbcType=INTEGER},
       goods_status = #{goodsStatus,jdbcType=INTEGER},
