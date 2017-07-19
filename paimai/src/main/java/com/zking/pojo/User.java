@@ -1,19 +1,18 @@
 package com.zking.pojo;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class User {
     private Integer uid;
 
     private String username;
 
-    private String usertype;
+    private Integer usertype;
 
     private String name;
 
     private String password;
 
-    private Date regTime;
 
     private Integer userinfoId;
 
@@ -21,6 +20,7 @@ public class User {
 
     private Integer userassetId;
 
+    private Timestamp regTime;
     public Integer getUid() {
         return uid;
     }
@@ -37,11 +37,11 @@ public class User {
         this.username = username;
     }
 
-    public String getUsertype() {
+    public Integer getUsertype() {
         return usertype;
     }
 
-    public void setUsertype(String usertype) {
+    public void setUsertype(Integer usertype) {
         this.usertype = usertype;
     }
 
@@ -61,11 +61,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getRegTime() {
+    public Timestamp getRegTime() {
         return regTime;
     }
 
-    public void setRegTime(Date regTime) {
+    public void setRegTime(Timestamp regTime) {
         this.regTime = regTime;
     }
 

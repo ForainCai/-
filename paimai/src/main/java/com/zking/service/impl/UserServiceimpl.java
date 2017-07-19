@@ -2,7 +2,6 @@ package com.zking.service.impl;
 
 import javax.annotation.Resource;
 
-
 import org.springframework.stereotype.Service;
 
 import com.zking.dao.UserMapper;
@@ -11,12 +10,11 @@ import com.zking.service.UserService;
 
 @Service("userservice")
 public class UserServiceimpl implements UserService{
-	
 	@Resource 
 	private UserMapper usermapper;
 	
 	public boolean findByUsernamePasswod(User u) {
-		User user=usermapper.findByUsernamePasswod(u);
+		User user=usermapper.findByUsernamePassword(u);
 		if (user!=null) {
 			return true;
 		}else {
@@ -24,4 +22,9 @@ public class UserServiceimpl implements UserService{
 		}	
 	}
 
+	@Override
+	public User findByUser(User u) {
+		User user = usermapper.findByUsernamePassword(u);
+		return user;
+	}
 }
