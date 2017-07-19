@@ -18,7 +18,7 @@ import com.zking.service.GoodsTypeService;
 import com.zking.service.UserService;
 
 @Controller
-@RequestMapping("/manager1")
+@RequestMapping("/manager")
 public class AdminController extends BaseController{
 	@Resource
 	private UserService userService;
@@ -31,7 +31,11 @@ public class AdminController extends BaseController{
 	
 	
 	
-	//�û���������Ա��ѯ�����û�
+	/**
+	 * 查找所有用户信息
+	 * @param map
+	 * @return
+	 */
 	@RequestMapping("/findAllUser")
 	public ModelAndView findAllUser(ModelMap map){
 		List<User> users = null;
@@ -45,7 +49,11 @@ public class AdminController extends BaseController{
 	}
 	
 	
-	//��Ʒ��������Ա��ѯ������Ʒ
+	/**
+	 * 查找所有物品信息
+	 * @param map
+	 * @return
+	 */
 	@RequestMapping("/findAllGoods")
 	public ModelAndView findAllGoods(ModelMap map){
 		List<Goods> goodss = null;
@@ -59,7 +67,11 @@ public class AdminController extends BaseController{
 	}
 	
 	
-	//��Ʒ���͹�������Ա��ѯ������Ʒ����
+	/**
+	 * 查找物品全部类型
+	 * @param map
+	 * @return
+	 */
 	@RequestMapping("/findAllGoodsType")
 	public String findAllGoodsType(ModelMap map){
 		List<GoodsType> goodsTypes = null;
@@ -71,7 +83,11 @@ public class AdminController extends BaseController{
 		map.addAttribute("goodsTypes", goodsTypes);
 		return "houjsp/goodstypemanager";
 	}
-	//��Ʒ���͹�������Աɾ����Ʒ����
+	/**
+	 * 删除物品类型
+	 * @param goodstype_id
+	 * @return
+	 */
 	@RequestMapping("/deleteGoodsType")
 	public String deleteAllGoodsType(String goodstype_id){
 		try {
@@ -82,12 +98,19 @@ public class AdminController extends BaseController{
 		}
 		return "redirect:findAllGoodsType";
 	}
-	//��Ʒ���͹����������ҳ��
+	/**
+	 * 跳转至添加物品类型页面
+	 * @return
+	 */
 	@RequestMapping("/toAddGoodsType")
 	public String toAddGoodsType(){
 		return "houjsp/toaddusertypemanager";
 	}
-	//��Ʒ���͹�������Ա�����Ʒ����
+	/**
+	 * 添加物品类型
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/addGoodsType")
 	public String addGoodsType(HttpServletRequest request){
 		String goodstypeName = request.getParameter("goodstypeName");
