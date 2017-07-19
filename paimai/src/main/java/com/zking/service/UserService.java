@@ -6,4 +6,6 @@ import com.zking.pojo.User;
 
 public interface UserService {
 	public List<User> findAllUser() throws Exception;
+
+	public boolean findByUsernamePasswod(User u);
 }

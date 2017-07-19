@@ -1,5 +1,7 @@
 package com.zking.dao;
 
+import java.util.List;
+
 import com.zking.pojo.Province;
 
 public interface ProvinceMapper {
@@ -14,4 +16,6 @@ public interface ProvinceMapper {
     int updateByPrimaryKeySelective(Province record);
 
     int updateByPrimaryKey(Province record);
+    
+    List<Province> findAllProvince();
 }

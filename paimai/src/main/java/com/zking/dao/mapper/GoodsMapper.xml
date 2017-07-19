@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zking.dao.GoodsMapper" >
-	<select id="findAllGoods" resultMap="goods">
-  		select * from goods
-  	</select>
+
+	
 	<resultMap  id="goods" type="com.zking.pojo.Goods">
-		<result column="goods_id" property="goods_id" />
-		<result column="goods_name" property="goods_name" />
-		<result column="goods_place" property="goods_place" />
-		<result column="goods_state" property="goods_state" />
-		<result column="goods_info" property="goods_info" />
+		<result column="goods_id" property="goodsId" />
+		<result column="goods_name" property="goodsName" />
+		<result column="goods_place" property="goodsPlace" />
+		<result column="goods_state" property="goodstypeId" />
+		<result column="gods_info" property="godsInfo" />
 	</resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.zking.pojo.Goods" >
     <result column="goods_picture" property="goodsPicture" jdbcType="LONGVARBINARY" />
+</resultMap>
+  <resultMap id="BaseResultMap" type="com.zking.pojo.Goods" >
+    <id column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_place" property="goodsPlace" jdbcType="INTEGER" />
+    <result column="goodstype_id" property="goodstypeId" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="goods_status" property="goodsStatus" jdbcType="INTEGER" />
+    <result column="gods_info" property="godsInfo" jdbcType="VARCHAR" />
+    <result column="goods_picture" property="goodsPicture" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    goods_id, goods_name, goods_place, goodstype_id, uid, goods_status, goods_info
+    goods_id, goods_name, goods_place, goodstype_id, uid, goods_status, gods_info,goods_picture
   </sql>
-  <sql id="Blob_Column_List" >
-    goods_picture
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from goods
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </select>
@@ -37,8 +41,11 @@
       goodstype_id, uid, goods_status, 
       goods_info, goods_picture)
     values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPlace,jdbcType=VARCHAR}, 
+      gods_info, goods_picture)
+    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPlace,jdbcType=INTEGER},
       #{goodstypeId,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{goodsStatus,jdbcType=INTEGER}, 
       #{goodsInfo,jdbcType=VARCHAR}, #{goodsPicture,jdbcType=LONGVARBINARY})
+      #{godsInfo,jdbcType=VARCHAR}, #{goodsPicture,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zking.pojo.Goods" >
     insert into goods
@@ -76,7 +83,7 @@
         #{goodsName,jdbcType=VARCHAR},
       </if>
       <if test="goodsPlace != null" >
-        #{goodsPlace,jdbcType=VARCHAR},
+        #{goodsPlace,jdbcType=INTEGER},
       </if>
       <if test="goodstypeId != null" >
         #{goodstypeId,jdbcType=INTEGER},
@@ -91,7 +98,7 @@
         #{goodsInfo,jdbcType=VARCHAR},
       </if>
       <if test="goodsPicture != null" >
-        #{goodsPicture,jdbcType=LONGVARBINARY},
+        #{goodsPicture,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -102,7 +109,7 @@
         goods_name = #{goodsName,jdbcType=VARCHAR},
       </if>
       <if test="goodsPlace != null" >
-        goods_place = #{goodsPlace,jdbcType=VARCHAR},
+        goods_place = #{goodsPlace,jdbcType=INTEGER},
       </if>
       <if test="goodstypeId != null" >
         goodstype_id = #{goodstypeId,jdbcType=INTEGER},
@@ -117,7 +124,7 @@
         goods_info = #{goodsInfo,jdbcType=VARCHAR},
       </if>
       <if test="goodsPicture != null" >
-        goods_picture = #{goodsPicture,jdbcType=LONGVARBINARY},
+        goods_picture = #{goodsPicture,jdbcType=VARCHAR},
       </if>
     </set>
     where goods_id = #{goodsId,jdbcType=INTEGER}
@@ -125,26 +132,31 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zking.pojo.Goods" >
     update goods
     set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_place = #{goodsPlace,jdbcType=VARCHAR},
+      goods_place = #{goodsPlace,jdbcType=INTEGER},
       goodstype_id = #{goodstypeId,jdbcType=INTEGER},
       uid = #{uid,jdbcType=INTEGER},
       goods_status = #{goodsStatus,jdbcType=INTEGER},
       goods_info = #{goodsInfo,jdbcType=VARCHAR},
       goods_picture = #{goodsPicture,jdbcType=LONGVARBINARY}
+      gods_info = #{godsInfo,jdbcType=VARCHAR},
+      goods_picture = #{goodsPicture,jdbcType=VARCHAR}
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zking.pojo.Goods" >
     update goods
     set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_place = #{goodsPlace,jdbcType=VARCHAR},
+      goods_place = #{goodsPlace,jdbcType=INTEGER},
       goodstype_id = #{goodstypeId,jdbcType=INTEGER},
       uid = #{uid,jdbcType=INTEGER},
       goods_status = #{goodsStatus,jdbcType=INTEGER},
       goods_info = #{goodsInfo,jdbcType=VARCHAR}
+      gods_info = #{godsInfo,jdbcType=VARCHAR},
+      goods_picture = #{goods_picture,jdbcType=VARCHAR}
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
-  
-  
+  <select id="findAllGoods" resultMap="goods">
+  		select * from goods
+  	</select>
   
   
 </mapper>

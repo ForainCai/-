@@ -3,91 +3,122 @@ package com.zking.pojo;
 import java.util.Arrays;
 
 public class Goods {
-    private Integer goods_id;
+    private Integer goodsId;
 
-    private String goods_name;
+    private String goodsName;
 
-    private String goods_place;
+    private Integer goodsPlace;
 
-    private Integer goods_status;
+    private Integer goodstypeId;
 
-    private String goods_info;
+    private Integer uid;
 
-    private byte[] goods_picture;
+    private Integer goodsStatus;
 
-    private GoodsType goodstype;
+    private String godsInfo;
 
-    private User user;
-
-	public Integer getGoods_id() {
-		return goods_id;
+    private String goodsPicture;
+    
+    
+    public Goods() {
+		// TODO Auto-generated constructor stub
 	}
+    
+    
+    
+    public Goods(Integer goodsId, String goodsName, Integer goodsPlace, Integer goodstypeId, Integer uid,
+    		Integer goodsStatus, String godsInfo, String goodsPicture) {
+    	super();
+    	this.goodsId = goodsId;
+    	this.goodsName = goodsName;
+    	this.goodsPlace = goodsPlace;
+    	this.goodstypeId = goodstypeId;
+    	this.uid = uid;
+    	this.goodsStatus = goodsStatus;
+    	this.godsInfo = godsInfo;
+    	this.goodsPicture = goodsPicture;
+    }
 
-	public void setGoods_id(Integer goods_id) {
-		this.goods_id = goods_id;
-	}
+    public Integer getGoodsId() {
+        return goodsId;
+    }
 
-	public String getGoods_name() {
-		return goods_name;
-	}
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
+    }
 
-	public void setGoods_name(String goods_name) {
-		this.goods_name = goods_name;
-	}
+    public String getGoodsName() {
+        return goodsName;
+    }
 
-	public String getGoods_place() {
-		return goods_place;
-	}
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
 
-	public void setGoods_place(String goods_place) {
-		this.goods_place = goods_place;
-	}
+    public Integer getGoodsPlace() {
+        return goodsPlace;
+    }
 
-	public Integer getGoods_status() {
-		return goods_status;
-	}
+    public void setGoodsPlace(Integer goodsPlace) {
+        this.goodsPlace = goodsPlace;
+    }
 
-	public void setGoods_status(Integer goods_status) {
-		this.goods_status = goods_status;
-	}
+    public Integer getGoodstypeId() {
+        return goodstypeId;
+    }
 
-	public String getGoods_info() {
-		return goods_info;
-	}
+    public void setGoodstypeId(Integer goodstypeId) {
+        this.goodstypeId = goodstypeId;
+    }
 
-	public void setGoods_info(String goods_info) {
-		this.goods_info = goods_info;
-	}
+    public Integer getUid() {
+        return uid;
+    }
 
-	public byte[] getGoods_picture() {
-		return goods_picture;
-	}
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
 
-	public void setGoods_picture(byte[] goods_picture) {
-		this.goods_picture = goods_picture;
-	}
+    public Integer getGoodsStatus() {
+        return goodsStatus;
+    }
 
-	public GoodsType getGoodstype() {
-		return goodstype;
-	}
+    public void setGoodsStatus(Integer goodsStatus) {
+        this.goodsStatus = goodsStatus;
+    }
 
-	public void setGoodstype(GoodsType goodstype) {
-		this.goodstype = goodstype;
-	}
+    public String getGodsInfo() {
+        return godsInfo;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public void setGodsInfo(String godsInfo) {
+        this.godsInfo = godsInfo;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public String getGoodsPicture() {
+        return goodsPicture;
+    }
+
+    public void setGoodsPicture(String goodsPicture) {
+        this.goodsPicture = goodsPicture;
+    }
+
+
 
 	@Override
 	public String toString() {
-		return "Goods [goods_id=" + goods_id + ", goods_name=" + goods_name + ", goods_place=" + goods_place
-				+ ", goods_status=" + goods_status + ", goods_info=" + goods_info + ", goods_picture="
-				+ Arrays.toString(goods_picture) + ", goodstype=" + goodstype + ", user=" + user + "]";
+		return "Goods [goodsId=" + goodsId + ", goodsName=" + goodsName + ", goodsPlace=" + goodsPlace
+				+ ", goodstypeId=" + goodstypeId + ", uid=" + uid + ", goodsStatus=" + goodsStatus + ", godsInfo="
+				+ godsInfo + ", goodsPicture=" + goodsPicture + "]";
 	}
+
+
+
+
+    
+    
+    
+    
+    
     
 }

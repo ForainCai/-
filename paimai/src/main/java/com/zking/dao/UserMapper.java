@@ -18,4 +18,5 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
     
     List<User> findAllUser();
+  	public User findByUsernamePasswod(User u);
 }

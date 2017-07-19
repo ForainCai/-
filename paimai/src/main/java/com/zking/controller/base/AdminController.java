@@ -18,70 +18,48 @@ import com.zking.service.GoodsTypeService;
 import com.zking.service.UserService;
 
 @Controller
-@RequestMapping("/manager")
-public class AdminController {
+@RequestMapping("/manager1")
+public class AdminController extends BaseController{
 	@Resource
 	private UserService userService;
+	
 	@Resource
 	private GoodsService goodsService;
+	
 	@Resource
 	private GoodsTypeService goodsTypeService;
 	
-	public GoodsTypeService getGoodsTypeService() {
-		return goodsTypeService;
-	}
-
-	public void setGoodsTypeService(GoodsTypeService goodsTypeService) {
-		this.goodsTypeService = goodsTypeService;
-	}
-
-	public GoodsService getGoodsService() {
-		return goodsService;
-	}
-
-	public void setGoodsService(GoodsService goodsService) {
-		this.goodsService = goodsService;
-	}
-
-	public UserService getUserService() {
-		return userService;
-	}
 	
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
 	
-	//ÓÃ»§¹ÜÀí£º¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§
+	//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	@RequestMapping("/findAllUser")
 	public ModelAndView findAllUser(ModelMap map){
 		List<User> users = null;
 		try {
 			users = userService.findAllUser();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.debug(e.getMessage());
 		}
 		map.addAttribute("users", users);
 		return new ModelAndView("houjsp/usermanager");
 	}
 	
 	
-	//ÎïÆ·¹ÜÀí£º¹ÜÀíÔ±²éÑ¯ËùÓĞÎïÆ·
+	//ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·
 	@RequestMapping("/findAllGoods")
 	public ModelAndView findAllGoods(ModelMap map){
 		List<Goods> goodss = null;
 		try {
 			goodss = goodsService.findAllGoods();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.debug(e.getMessage());
 		}
 		map.addAttribute("goodss", goodss);
 		return new ModelAndView("houjsp/goodsmanager");
 	}
 	
 	
-	//ÎïÆ·ÀàĞÍ¹ÜÀí£º¹ÜÀíÔ±²éÑ¯ËùÓĞÎïÆ·ÀàĞÍ
+	//ï¿½ï¿½Æ·ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/findAllGoodsType")
 	public String findAllGoodsType(ModelMap map){
 		List<GoodsType> goodsTypes = null;
@@ -93,7 +71,7 @@ public class AdminController {
 		map.addAttribute("goodsTypes", goodsTypes);
 		return "houjsp/goodstypemanager";
 	}
-	//ÎïÆ·ÀàĞÍ¹ÜÀí£º¹ÜÀíÔ±É¾³ıÎïÆ·ÀàĞÍ
+	//ï¿½ï¿½Æ·ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±É¾ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/deleteGoodsType")
 	public String deleteAllGoodsType(String goodstype_id){
 		try {
@@ -104,12 +82,12 @@ public class AdminController {
 		}
 		return "redirect:findAllGoodsType";
 	}
-	//ÎïÆ·ÀàĞÍ¹ÜÀí£º½øÈëÌí¼ÓÒ³Ãæ
+	//ï¿½ï¿½Æ·ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 	@RequestMapping("/toAddGoodsType")
 	public String toAddGoodsType(){
 		return "houjsp/toaddusertypemanager";
 	}
-	//ÎïÆ·ÀàĞÍ¹ÜÀí£º¹ÜÀíÔ±Ìí¼ÓÎïÆ·ÀàĞÍ
+	//ï¿½ï¿½Æ·ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/addGoodsType")
 	public String addGoodsType(HttpServletRequest request){
 		String goodstypeName = request.getParameter("goodstypeName");

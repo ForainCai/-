@@ -28,7 +28,6 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public List<Goods> findAllGoods() throws Exception {
 		List<Goods> goodss = goodsMapper.findAllGoods();
-		System.out.println(goodss);
 		return goodss;
 	}
 

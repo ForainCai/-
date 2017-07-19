@@ -117,13 +117,13 @@
                     <tbody>
                         <c:forEach items="${goodss }" var="goodss">
 	                        <tr class="gradeX">
-	                        	<td>${goodss.goods_name }</td>
-	                            <td>${goodss.goods_place }</td>
+	                        	<td>${goodss.goodsName }</td>
+	                            <td>${goodss.goodsPlace }</td>
 	                            <td>xx</td>
 	                            <td>xx</td>
 	                            <td>xx</td>
-	                            <td>${goodss.goods_status }</td>
-	                            <td>${goodss.goods_info }</td>
+	                            <td>${goodss.goodstypeId }</td>
+	                            <td>${goodss.godsInfo }</td>
 	                            <td class="head1" style="width:120px;"><center><button class="stdbtn btn_blue">修改</button>&nbsp;&nbsp;
 	                            <button class="stdbtn btn_blue">删除</button></center></td>
 	                        </tr>
