@@ -17,7 +17,7 @@ public class Goods {
 
     private String godsInfo;
 
-    private byte[] goodsPicture;
+    private String goodsPicture;
     
     
     public Goods() {
@@ -27,7 +27,7 @@ public class Goods {
     
     
     public Goods(Integer goodsId, String goodsName, Integer goodsPlace, Integer goodstypeId, Integer uid,
-    		Integer goodsStatus, String godsInfo, byte[] goodsPicture) {
+    		Integer goodsStatus, String godsInfo, String goodsPicture) {
     	super();
     	this.goodsId = goodsId;
     	this.goodsName = goodsName;
@@ -95,11 +95,11 @@ public class Goods {
         this.godsInfo = godsInfo;
     }
 
-    public byte[] getGoodsPicture() {
+    public String getGoodsPicture() {
         return goodsPicture;
     }
 
-    public void setGoodsPicture(byte[] goodsPicture) {
+    public void setGoodsPicture(String goodsPicture) {
         this.goodsPicture = goodsPicture;
     }
 
@@ -109,8 +109,11 @@ public class Goods {
 	public String toString() {
 		return "Goods [goodsId=" + goodsId + ", goodsName=" + goodsName + ", goodsPlace=" + goodsPlace
 				+ ", goodstypeId=" + goodstypeId + ", uid=" + uid + ", goodsStatus=" + goodsStatus + ", godsInfo="
-				+ godsInfo + ", goodsPicture=" + Arrays.toString(goodsPicture) + "]";
+				+ godsInfo + ", goodsPicture=" + goodsPicture + "]";
 	}
+
+
+
 
     
     

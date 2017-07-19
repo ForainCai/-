@@ -9,21 +9,14 @@
     <result column="uid" property="uid" jdbcType="INTEGER" />
     <result column="goods_status" property="goodsStatus" jdbcType="INTEGER" />
     <result column="gods_info" property="godsInfo" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.zking.pojo.Goods" extends="BaseResultMap" >
-    <result column="goods_picture" property="goodsPicture" jdbcType="LONGVARBINARY" />
+    <result column="goods_picture" property="goodsPicture" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    goods_id, goods_name, goods_place, goodstype_id, uid, goods_status, gods_info
+    goods_id, goods_name, goods_place, goodstype_id, uid, goods_status, gods_info,goods_picture
   </sql>
-  <sql id="Blob_Column_List" >
-    goods_picture
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from goods
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </select>
@@ -37,7 +30,7 @@
       gods_info, goods_picture)
     values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPlace,jdbcType=INTEGER}, 
       #{goodstypeId,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{goodsStatus,jdbcType=INTEGER}, 
-      #{godsInfo,jdbcType=VARCHAR}, #{goodsPicture,jdbcType=LONGVARBINARY})
+      #{godsInfo,jdbcType=VARCHAR}, #{goodsPicture,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zking.pojo.Goods" >
     insert into goods
@@ -90,7 +83,7 @@
         #{godsInfo,jdbcType=VARCHAR},
       </if>
       <if test="goodsPicture != null" >
-        #{goodsPicture,jdbcType=LONGVARBINARY},
+        #{goodsPicture,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -116,7 +109,7 @@
         gods_info = #{godsInfo,jdbcType=VARCHAR},
       </if>
       <if test="goodsPicture != null" >
-        goods_picture = #{goodsPicture,jdbcType=LONGVARBINARY},
+        goods_picture = #{goodsPicture,jdbcType=VARCHAR},
       </if>
     </set>
     where goods_id = #{goodsId,jdbcType=INTEGER}
@@ -129,7 +122,7 @@
       uid = #{uid,jdbcType=INTEGER},
       goods_status = #{goodsStatus,jdbcType=INTEGER},
       gods_info = #{godsInfo,jdbcType=VARCHAR},
-      goods_picture = #{goodsPicture,jdbcType=LONGVARBINARY}
+      goods_picture = #{goodsPicture,jdbcType=VARCHAR}
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zking.pojo.Goods" >
@@ -139,7 +132,8 @@
       goodstype_id = #{goodstypeId,jdbcType=INTEGER},
       uid = #{uid,jdbcType=INTEGER},
       goods_status = #{goodsStatus,jdbcType=INTEGER},
-      gods_info = #{godsInfo,jdbcType=VARCHAR}
+      gods_info = #{godsInfo,jdbcType=VARCHAR},
+      goods_picture = #{goods_picture,jdbcType=VARCHAR}
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
 </mapper>
