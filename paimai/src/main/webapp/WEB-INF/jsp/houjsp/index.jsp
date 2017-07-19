@@ -77,7 +77,7 @@
     
     <div class="header">
    <ul class="headermenu">
-        	<li class="current"><a href="<%=basePath%>manager/toindex"><span class="icon icon-flatscreen"></span>首页</a></li>
+        	<li class="current"><a href="<%=basePath%>manager/tomain"><span class="icon icon-flatscreen"></span>首页</a></li>
             <li><a href="#"><span class="icon icon-message"></span>查看消息</a></li>
             <li><a href="#"><span class="icon icon-chart"></span>统计报表</a></li>
         </ul>
@@ -100,11 +100,11 @@
     
     <div class="vernav2 iconmenu">
     	<ul>
-        	<li><a href="#" class="editor">用户管理</a>  </li>         
+        	<li><a href="<%=basePath %>manager/findAllUser.do" class="editor">用户管理</a>  </li>         
             <li><a href="#formsub" class="editor">物品管理</a>  
             <span class="arrow"></span>
             	<ul id="formsub">
-               		<li><a href="<%=basePath %>manager/to404.do">物品类型管理</a></li>
+               		<li><a href="<%=basePath %>manager/findAllGoodsType.do">物品类型管理</a></li>
                 </ul>
             </li>   
          	<li><a href="#" class="editor">仓库管理</a>  </li>   

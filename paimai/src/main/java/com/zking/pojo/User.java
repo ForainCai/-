@@ -1,7 +1,7 @@
 package com.zking.pojo;
 
-
 import java.sql.Timestamp;
+
 import java.util.Date;
 
 public class User {
@@ -42,9 +42,6 @@ public class User {
 		this.usercreditId = usercreditId;
 		this.userassetId = userassetId;
 	}
-
-
-
 	public Integer getUid() {
         return uid;
     }
@@ -121,6 +118,8 @@ public class User {
 		return "User1 [uid=" + uid + ", username=" + username + ", usertype=" + usertype + ", name=" + name
 				+ ", password=" + password + ", regTime=" + regTime + ", userinfoId=" + userinfoId + ", usercreditId="
 				+ usercreditId + ", userassetId=" + userassetId + "]";
-	}    
+	}
+    
+    
     
 }
