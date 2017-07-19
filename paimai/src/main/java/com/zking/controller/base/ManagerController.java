@@ -19,6 +19,7 @@ import com.zking.pojo.User;
 import com.zking.pojo.UserInfo;
 import com.zking.service.UserService;
 import com.zking.service.UserinfoService;
+import com.zking.util.MD5;
 
 
 @Controller
@@ -49,6 +50,7 @@ public class ManagerController extends BaseController{
 		JSONObject jsonObject = new JSONObject();	
 		HttpSession session=request.getSession();
 		u.setUsertype(1);	
+		u.setPassword(MD5.MD5Encode(u.getPassword()));
 		u.setUserinfoId(1);
 		/**
 		 * 查找管理员
