@@ -195,44 +195,37 @@ a {
 	<script type="text/javascript">
 	
 	
-			//获得表对象
-		    var table = $("#tablelist");
-			var table2 = $("#tablelist2");
+	//获得表对象
+    var table = $("#tablelist");
+    var table2 = $("#tablelist2");
 	function choiceShen(){
-		
 	    $("#choice").html("全国");
 		Load();
-		
 	}
 	
-	
-		function test(data) {
+	function test(data) {
 			alert('弹出');
 		}
 		
-		function Load(){
+	function Load(){
 			table2.empty();
 			var sel = $("#sel").val();
 				$.ajax({
-					url:"<%=basePath%>city/findAllProvince",
+					url:"<%=basePath%>customer/findAllProvince",
 				    type:"post",
 				    dataType:"json",
 				    success:function(data){
 				    	
 				    	// 清空
 				    	table.empty();
-				    	//var tr = $("<tr>");
-				    	//table.append(tr);
 				    	for(var i=0;i<data.length;i++){
 				    		var op =$("<a style='text-decoration:none;color:BLACK;cursor:pointer' name='"+data[i].pid+"' onclick='change(this)'>"+ data[i].pname+'&nbsp&nbsp&nbsp' + "</a>");
 				    		table.append(op);
 				    	}
-				    	//var tr1 = $("</tr>");
-				    	//table.append(tr1);
 				    }
 				});
 			}
-		function change(data){
+	function change(data){
 			
 			table.empty();
 			var name = data.text;
@@ -242,17 +235,11 @@ a {
 	    	table2.empty();
 			
 			$.ajax({
-				url:"<%=basePath%>city/findAllCity",
+				url:"<%=basePath%>customer/findAllCity",
 						type : "post",
 						data : "pid=+" + pid + "+",
 						dataType : "json",
 						success : function(city) {
-
-							//var br = $("<br>");
-							//$("#ui").after(br);
-
-							//$("#ui").html();
-
 							for (var i = 0; i < city.length; i++) {
 								var op = $("<a style='text-decoration:none;color:BLACK;cursor:pointer' onclick='point(this)'>"
 										+ city[i].cname
@@ -264,11 +251,11 @@ a {
 					});
 		}
 
-		function point(data) {
+	function point(data) {
 
-			alert(data.text);
+		alert(data.text);
 
-		}
+	}
 	</script>
 
 </body>
