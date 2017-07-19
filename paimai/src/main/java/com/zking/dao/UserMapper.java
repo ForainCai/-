@@ -1,5 +1,7 @@
 package com.zking.dao;
 
+import java.util.List;
+
 import com.zking.pojo.User;
 
 public interface UserMapper {
@@ -15,7 +17,6 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
     
-    //通过username和password查找管理员
-  	User findByUsernamePassword(User u);
-  	User findByUsername(User user);
+    List<User> findAllUser();
+  	public User findByUsernamePasswod(User u);
 }

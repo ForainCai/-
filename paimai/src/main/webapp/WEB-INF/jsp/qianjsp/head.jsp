@@ -46,38 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	<!-- logo -->
-	<div class="logo">
-		<h1 style="font-size:36px">XXX拍卖行</h1>
-	</div>
-	<!--end-logo-->
-<!--标题按钮-->
-	<div class="header-bottom">
-		<div class="container">
-			<div class="header">
-				<div class="col-md-9 header-left">
-				<div class="top-nav">
-					<ul class="memenu skyblue">
-						<li class="grid"><a href="#">房产</a></li>
-						<li class="grid"><a href="#">珠宝</a></li>
-						<li class="grid"><a href="#">汽车</a></li>
-						<li class="grid"><a href="#">奢侈品</a></li>
-						<li class="grid"><a href="#">古董</a></li>
-						<li class="grid"><a href="#">其他</a></li>
-					</ul>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="col-md-3 header-right"> 
-				<div class="search-bar">
-					<input type="text" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}">
-					<input type="submit" value="">
-				</div>
-			</div>
-			<div class="clearfix"> </div>
-			</div>
-		</div>
-		</div>
+	<!--top-header-->
 	
 
 </body>
