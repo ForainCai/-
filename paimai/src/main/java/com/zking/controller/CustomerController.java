@@ -14,15 +14,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zking.pojo.City;
+import com.zking.pojo.GoodsType;
 import com.zking.pojo.Province;
 import com.zking.pojo.User;
 import com.zking.service.CityService;
+import com.zking.service.GoodsTypeService;
 import com.zking.service.ProvinceService;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-	
 	
 	@Resource
 	private ProvinceService proviceService;
@@ -30,9 +31,12 @@ public class CustomerController {
 	@Resource
 	private CityService cityService;
 	
+	@Resource
+	private GoodsTypeService goodsTypeService;
+	
+	
 	@RequestMapping(value="/toProvince")
 	public Object toProvince(){
-		
 		return "qianjsp/province";
 	}	
 	
@@ -43,6 +47,15 @@ public class CustomerController {
 		return "qianjsp/pictureLoad";
 	}
 
+	
+	@ResponseBody
+	@RequestMapping(value="/findAllGoodType" ,method=RequestMethod.POST,produces={"application/json;charset=UTF-8"})
+	public List<GoodsType> findAllGoodType() throws Exception{
+		
+			return goodsTypeService.findAllGoodsType();
+	}
+	
+	
 	@ResponseBody
 	@RequestMapping(value="/findAllProvince" ,method=RequestMethod.POST,produces={"application/json;charset=UTF-8"})
 	public List<Province> findAllProvince(){

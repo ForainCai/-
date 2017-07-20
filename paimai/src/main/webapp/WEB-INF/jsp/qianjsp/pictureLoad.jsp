@@ -61,14 +61,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</p>
 					</div>
 					
-					<img id="Images" alt="" style="width: 200px; height: 200px;background-color: BLACK"
-								src="你自己的透明图片" />
+					<img id="Images" alt="" style="width: 200px; height: 200px;src="你自己的透明图片" />
 				</div>
 				<div class="col-md-9 contact-right">
 						<input type="text" placeholder="商品名" id="goodname" style="width: 450px;height: 40px">
 						<br><br><br>
 						
-						<input type="file" placeholder="请选择图片文件" id="images" style="width: 450px;height: 40px">
+						<input type="file" placeholder="请选择图片文件" id="images" onchange="put(this)" style="width: 450px;height: 40px">
 						
 						<br>
 							请选择商品类别：&nbsp;<select id="type" class="input w50" style="width: 100px;height: 35px">
@@ -153,6 +152,7 @@ $("#tijiao").click(
 				    		sheng.append(op);
 				    	}
 				    	LoadFirstShi(data[0].pid);
+				    	LoadType();
 				    }
 				});
 			}
@@ -200,6 +200,73 @@ $("#tijiao").click(
 					});
 		}
    		
+   		//加载商品类型
+   		function LoadType(){
+   			
+   			$.ajax({
+				url:"<%=basePath%>customer/findAllGoodType",
+						type : "post",
+						dataType : "json",
+						success : function(data) {
+							//获取select 标签
+					    	var type = $("#type");
+					    	// 清空
+					    	type.empty();
+
+							for(var i=0;i<data.length;i++){
+					    		var op = $("<option  value='"+data[i].goodstype_id+"'>"+data[i].goodstype_name+"</option>");
+					    		type.append(op);
+					    	}
+						}
+					});
+   		}
+   		
+   		
+   		//把图片放入左边边的img中
+   		function put(data) {
+
+   			picture = data;
+   			$("#url1").val(data.value);
+
+   			showImage(data);
+   		}
+   	
+   		function showImage(obj) {
+
+   			var newPreview = document.getElementById("Images");
+   			if (obj) {
+   				//ie
+   				if (window.navigator.userAgent.indexOf("MSIE") >= 1) {
+   					obj.select();
+   					newPreview.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);";
+   					newPreview.filters
+   							.item("DXImageTransform.Microsoft.AlphaImageLoader").src = document.selection
+   							.createRange().text;
+   					return;
+   				}
+   				//firefox
+   				else if (window.navigator.userAgent.indexOf("Chrome") >= 1) {
+   					if (obj.files) {
+   						newPreview.src = window.URL.createObjectURL(obj.files
+   								.item(0));
+   						return;
+   					}
+   					newPreview.src = obj.value;
+   					return;
+   				}else if (window.navigator.userAgent.indexOf("Firefox") >= 1) {
+   					if (obj.files) {
+   						newPreview.src = window.URL.createObjectURL(obj.files
+   								.item(0));
+   						return;
+   					}
+   					newPreview.src = obj.value;
+   					return;
+   				}
+   				newPreview.src = obj.value;
+   				return;
+   			}
+   			
+   		}
    		
 		
 		
