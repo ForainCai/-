@@ -10,13 +10,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>管理员登录页面</title>
+<script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery-1.7.min.js"></script>
 <link rel="stylesheet" href="<%=basePath %>houCss/css/style.default.css" type="text/css" />
-<script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<!-- 
+
+<script type="text/javascript" src="<%=basePath %>houCss/js/custom/index.js"></script>
+<script type="text/javascript" src="<%=basePath %>houCss/js/custom/general.js"></script>
+ -->
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.cookie.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>houCss/js/custom/general.js"></script>
-<script type="text/javascript" src="<%=basePath %>houCss/js/custom/index.js"></script>
-<script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
 </head>
 <body class="loginpage">
 	<div class="loginbox">
@@ -39,7 +42,7 @@
                     </div>
                 </div>
                 
-                <button id="login2">登录</button>
+                <button id="login2" onclick="login();">登录</button>
                 
                 <div class="keep"><input type="checkbox" /> 记住密码</div>
             
@@ -49,9 +52,8 @@
 
 </body>
 <script type="text/javascript">
-$("#login2").click(
-		function() {
-			var username = $("#username").val();
+		function login() {
+			var username = $("input[name='username']").val();
 			var password = $("#password").val();
 			if (username == "" || password == "") {
 				alert("账号或密码不能为空");
@@ -59,15 +61,11 @@ $("#login2").click(
 				$.ajax({
 					type : 'post',
 					dataType : 'json',
-					url : '<%=basePath%>manager/checklogin?username=' + username + "&password=" + password,
+					url : '<%=basePath%>manager/checklogin?username=' + username + '&password=' + password,
 					success : function(data) {					
-						
-						alert(data.msg);
-						
-						
 						if (data.msg != -1) {
 							alert("成功登陆");	
-							window.location.href="<%=basePath%>manager/toindex"; 
+							window.location.href='<%=basePath%>manager/tomain'; 
 						}else{
 							alert("账号或密码错误！");
 						}
@@ -75,6 +73,6 @@ $("#login2").click(
 				});
 			}
 
-		});
+		}
 </script>
 </html>

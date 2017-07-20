@@ -7,13 +7,13 @@
     <result column="usertype" property="usertype" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="reg_time" property="regTime" jdbcType="TIMESTAMP" />
     <result column="userinfo_id" property="userinfoId" jdbcType="INTEGER" />
     <result column="usercredit_id" property="usercreditId" jdbcType="INTEGER" />
     <result column="userasset_id" property="userassetId" jdbcType="INTEGER" />
+    <result column="reg_time" property="regTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    uid, username, usertype, name, password, reg_time, userinfo_id, usercredit_id, userasset_id
+    uid, username, usertype, name, password, userinfo_id, usercredit_id, userasset_id, reg_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -138,7 +138,11 @@
       userasset_id = #{userassetId,jdbcType=INTEGER}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
-  <select id="findByUsernamePasswod" resultType="com.zking.pojo.User">
-  	select * from user where username=#{username} and password=#{password} and usertype=#{usertype}
+  <select id="findByUsernamePassword" resultMap="BaseResultMap" parameterType="com.zking.pojo.User">
+  	select uid,username,usertype,name,password,userinfo_id from user where username=#{username,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR} and usertype=#{usertype,jdbcType=INTEGER}
+  </select>
+  <select id="findAllUser" resultType="com.zking.pojo.User">
+  	select * from user
   </select>
 </mapper>
+ 

@@ -103,4 +103,14 @@
       userinfo_sex = #{userinfoSex,jdbcType=VARCHAR}
     where userinfo_id = #{userinfoId,jdbcType=INTEGER}
   </update>
+  
+  <select id="findByAllUser" resultMap="BaseResultMap" parameterType="com.zking.pojo.UserInfo">
+  	select * from userinfo where userinfo_id=#{uid}
+  </select>
+  
+  <update id="upuserinfobyuserinfoid" parameterType="com.zking.pojo.UserInfo" >
+    update userinfo
+    set userinfo_time = now()
+    where userinfo_id = #{userinfoid}
+  </update>
 </mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.dao.GoodsTypeMapper" >
+  <resultMap id="findAllUserType" type="com.zking.pojo.GoodsType" >
+    <id column="goodstype_id" property="goodstype_id" jdbcType="INTEGER" />
+    <result column="goodstype_name" property="goodstype_name" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="findAllGoodsType" resultType="com.zking.pojo.GoodsType">
+  		select * from goodstype
+  </select>
+  
+  <!-- 添加物品类型，主键自增 -->
+  <insert id="addGoodsType" parameterType="com.zking.pojo.GoodsType">
+		<!-- selectKey将主键返回，需要再返回 -->
+		<selectKey keyProperty="goodstype_id" order="AFTER" resultType="java.lang.Integer">
+			select LAST_INSERT_ID()
+		</selectKey>
+	   insert into goodstype (goodstype_name) values (#{goodstype_name});
+	</insert>
+  
+  <!-- 删除物品类型 -->
+  <delete id="deleteGoodsType" parameterType="int">
+		delete from goodstype where goodstype_id=#{goodstype_id}
+  </delete>
+  
+  
+  
+  <sql id="Base_Column_List" >
+    goodstype_id, goodstype_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodstype
+    where goodstype_id = #{goodstypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goodstype
+    where goodstype_id = #{goodstypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.GoodsType" >
+    insert into goodstype (goodstype_id, goodstype_name)
+    values (#{goodstypeId,jdbcType=INTEGER}, #{goodstypeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.GoodsType" >
+    insert into goodstype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodstypeId != null" >
+        goodstype_id,
+      </if>
+      <if test="goodstypeName != null" >
+        goodstype_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodstypeId != null" >
+        #{goodstypeId,jdbcType=INTEGER},
+      </if>
+      <if test="goodstypeName != null" >
+        #{goodstypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.GoodsType" >
+    update goodstype
+    <set >
+      <if test="goodstypeName != null" >
+        goodstype_name = #{goodstypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goodstype_id = #{goodstypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.GoodsType" >
+    update goodstype
+    set goodstype_name = #{goodstypeName,jdbcType=VARCHAR}
+    where goodstype_id = #{goodstypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

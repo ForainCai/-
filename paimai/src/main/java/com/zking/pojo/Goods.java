@@ -1,11 +1,13 @@
 package com.zking.pojo;
 
+import java.util.Arrays;
+
 public class Goods {
     private Integer goodsId;
 
     private String goodsName;
 
-    private String goodsPlace;
+    private Integer goodsPlace;
 
     private Integer goodstypeId;
 
@@ -15,7 +17,27 @@ public class Goods {
 
     private String godsInfo;
 
-    private byte[] goodsPicture;
+    private String goodsPicture;
+    
+    
+    public Goods() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    
+    
+    public Goods(Integer goodsId, String goodsName, Integer goodsPlace, Integer goodstypeId, Integer uid,
+    		Integer goodsStatus, String godsInfo, String goodsPicture) {
+    	super();
+    	this.goodsId = goodsId;
+    	this.goodsName = goodsName;
+    	this.goodsPlace = goodsPlace;
+    	this.goodstypeId = goodstypeId;
+    	this.uid = uid;
+    	this.goodsStatus = goodsStatus;
+    	this.godsInfo = godsInfo;
+    	this.goodsPicture = goodsPicture;
+    }
 
     public Integer getGoodsId() {
         return goodsId;
@@ -33,11 +55,11 @@ public class Goods {
         this.goodsName = goodsName;
     }
 
-    public String getGoodsPlace() {
+    public Integer getGoodsPlace() {
         return goodsPlace;
     }
 
-    public void setGoodsPlace(String goodsPlace) {
+    public void setGoodsPlace(Integer goodsPlace) {
         this.goodsPlace = goodsPlace;
     }
 
@@ -73,11 +95,30 @@ public class Goods {
         this.godsInfo = godsInfo;
     }
 
-    public byte[] getGoodsPicture() {
+    public String getGoodsPicture() {
         return goodsPicture;
     }
 
-    public void setGoodsPicture(byte[] goodsPicture) {
+    public void setGoodsPicture(String goodsPicture) {
         this.goodsPicture = goodsPicture;
     }
+
+
+
+	@Override
+	public String toString() {
+		return "Goods [goodsId=" + goodsId + ", goodsName=" + goodsName + ", goodsPlace=" + goodsPlace
+				+ ", goodstypeId=" + goodstypeId + ", uid=" + uid + ", goodsStatus=" + goodsStatus + ", godsInfo="
+				+ godsInfo + ", goodsPicture=" + goodsPicture + "]";
+	}
+
+
+
+
+    
+    
+    
+    
+    
+    
 }

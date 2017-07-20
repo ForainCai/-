@@ -1,5 +1,7 @@
 package com.zking.pojo;
 
+import java.sql.Timestamp;
+
 import java.util.Date;
 
 public class User {
@@ -13,15 +15,34 @@ public class User {
 
     private String password;
 
-    private Date regTime;
+    private Timestamp regTime;
 
     private Integer userinfoId;
 
     private Integer usercreditId;
 
     private Integer userassetId;
-
-    public Integer getUid() {
+    
+    
+    public User() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    
+	public User(Integer uid, String username, Integer usertype, String name, String password, Timestamp regTime,
+			Integer userinfoId, Integer usercreditId, Integer userassetId) {
+		super();
+		this.uid = uid;
+		this.username = username;
+		this.usertype = usertype;
+		this.name = name;
+		this.password = password;
+		this.regTime = regTime;
+		this.userinfoId = userinfoId;
+		this.usercreditId = usercreditId;
+		this.userassetId = userassetId;
+	}
+	public Integer getUid() {
         return uid;
     }
 
@@ -61,11 +82,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getRegTime() {
+    public Timestamp getRegTime() {
         return regTime;
     }
 
-    public void setRegTime(Date regTime) {
+    public void setRegTime(Timestamp regTime) {
         this.regTime = regTime;
     }
 
@@ -92,4 +113,13 @@ public class User {
     public void setUserassetId(Integer userassetId) {
         this.userassetId = userassetId;
     }
+	@Override
+	public String toString() {
+		return "User1 [uid=" + uid + ", username=" + username + ", usertype=" + usertype + ", name=" + name
+				+ ", password=" + password + ", regTime=" + regTime + ", userinfoId=" + userinfoId + ", usercreditId="
+				+ usercreditId + ", userassetId=" + userassetId + "]";
+	}
+    
+    
+    
 }
