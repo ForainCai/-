@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.zking.pojo.User" >
     <id column="uid" property="uid" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="usertype" property="usertype" jdbcType="VARCHAR" />
+    <result column="usertype" property="usertype" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="reg_time" property="regTime" jdbcType="TIMESTAMP" />
@@ -30,7 +30,7 @@
       name, password, reg_time, 
       userinfo_id, usercredit_id, userasset_id
       )
-    values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{usertype,jdbcType=VARCHAR}, 
+    values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{usertype,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP}, 
       #{userinfoId,jdbcType=INTEGER}, #{usercreditId,jdbcType=INTEGER}, #{userassetId,jdbcType=INTEGER}
       )
@@ -74,7 +74,7 @@
         #{username,jdbcType=VARCHAR},
       </if>
       <if test="usertype != null" >
-        #{usertype,jdbcType=VARCHAR},
+        #{usertype,jdbcType=INTEGER},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -103,7 +103,7 @@
         username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="usertype != null" >
-        usertype = #{usertype,jdbcType=VARCHAR},
+        usertype = #{usertype,jdbcType=INTEGER},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -129,7 +129,7 @@
   <update id="updateByPrimaryKey" parameterType="com.zking.pojo.User" >
     update user
     set username = #{username,jdbcType=VARCHAR},
-      usertype = #{usertype,jdbcType=VARCHAR},
+      usertype = #{usertype,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       reg_time = #{regTime,jdbcType=TIMESTAMP},

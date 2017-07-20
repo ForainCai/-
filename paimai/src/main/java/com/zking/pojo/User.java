@@ -7,7 +7,7 @@ public class User {
 
     private String username;
 
-    private String usertype;
+    private Integer usertype;
 
     private String name;
 
@@ -37,11 +37,11 @@ public class User {
         this.username = username;
     }
 
-    public String getUsertype() {
+    public Integer getUsertype() {
         return usertype;
     }
 
-    public void setUsertype(String usertype) {
+    public void setUsertype(Integer usertype) {
         this.usertype = usertype;
     }
 

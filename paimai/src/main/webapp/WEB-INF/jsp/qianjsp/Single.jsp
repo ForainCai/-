@@ -56,19 +56,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="top-header">
 		<div class="container">
 			<div class="top-header-main">
-				<div class="col-md-6 top-header-left">
-					<div class="drop">
-						<div class="box">
-							
+				<div>
+					<div class="cart box_1" style="float: right;">
+						<div class="drop">
+							<div class="box" style="float: right;">
+								<select tabindex="4" class="dropdown drop">
+									<option value="" class="label">用户名</option>
+									<option value="1">个人信息</option>
+									<option value="2">修改密码</option>
+								</select>
+							</div>
 						</div>
-						<div class="box1">
-							
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-				<div class="col-md-6 top-header-left">
-					<div class="cart box_1">
 						<a href="#" style="text-decoration:none">
 							<div class="total">
 							<!-- 显示购物车内物品总价 -->
