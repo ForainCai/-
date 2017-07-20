@@ -26,8 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </head>
 <body>
-<<<<<<< HEAD
-<!-- logo -->
+	<!-- logo -->
 	<div class="logo">
 		<h1 style="font-size:36px">XXX拍卖网</h1>
 	</div>
@@ -103,54 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			    });
 			  </script>
-	<!--Slider-Starts-Here-->
-=======
-
-	<!--标题按钮-->
-	<!-- 轮播图 -->
-	<div class="bnr" id="home">
-		<div  id="top" class="callbacks_container">
-			<ul class="rslides" id="slider4">
-			    <li>
-					<div class="banner">
-					</div>
-				</li>
-				<li>
-					<div class="banner1">
-					</div>
-				</li>
-				<li>
-					<div class="banner2">
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
-	<!--Slider-Starts-Here-->
-				<script src="<%=basePath %>qianCss/js/responsiveslides.min.js"></script>
-				<script>
-			    // You can also use "$(window).load(function() {"
-			    $(function () {
-			      // Slideshow 4
-			      $("#slider4").responsiveSlides({
-			        auto: true,
-			        pager: true,
-			        nav: true,
-			        speed: 500,
-			        namespace: "callbacks",
-			        before: function () {
-			          $('.events').append("<li>before event fired.</li>");
-			        },
-			        after: function () {
-			          $('.events').append("<li>after event fired.</li>");
-			        }
-			      });
-			
-			    });
-			  </script>
-			<!--end轮播图-->
->>>>>>> branch 'master' of https://github.com/findTruth/paimai.git
+	<!--Slider-Starts-end-->
 	<!-- 详情信息图 -->		
 	<div class="about"> 
 		<div class="container">
