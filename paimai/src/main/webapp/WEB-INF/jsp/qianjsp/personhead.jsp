@@ -1,4 +1,3 @@
-<%@page import="com.zking.pojo.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,10 +8,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
-
 <link href="<%=basePath %>qianCss/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
  <script src="<%=basePath %>qianCss/js/jquery-1.11.0.min.js"></script>
 <link href="<%=basePath %>qianCss/css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -27,29 +24,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="<%=basePath %>qianCss/js/jquery.easydropdown.js"></script>
 </head>
 <body>
+	<!--top-header-->
 	<div class="top-header">
 		<div class="container">
 			<div class="top-header-main">
-				<div class="col-md-6 top-header-left">
-						<div class="clearfix">
-								
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 top-header-left">
-					<div class="cart box_1" style="width:100px;height: 50px;">			
-						<% 
-						//session.getAttribute("user");
-						User user = new User();
-						if(null == user) {%>		
-						<a class="clearfix" href="#" style="font-size:15px;color:WHITE;text-decoration:none;float: left;margin-top: 15px;">登录</a>
-						<a class="clearfix" href="#" style="font-size:15px;color:WHITE;text-decoration:none;float: right;margin-top: 15px;">注册</a>
-						<%}else{ %>
-						<div class="cart box_1" style="float: right;">
+				<div>
+					<div class="cart box_1" style="float: right;">
 						<div class="drop">
 							<div class="box" style="float: right;">
 								<select tabindex="4" class="dropdown drop">
-									<option value="" class="label"><%=user.getName() %></option>
+									<option value="" class="label">用户名</option>
 									<option value="1">个人信息</option>
 									<option value="2">修改密码</option>
 								</select>
@@ -64,16 +48,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</a>
 						<div class="clearfix"> </div>
 					</div>
-						<%} %>
-						<div class="clearfix"> </div>
-					</div>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
-	<!--top-header-->
-	
-
+	<!--end-top-header-->
 </body>
 </html>

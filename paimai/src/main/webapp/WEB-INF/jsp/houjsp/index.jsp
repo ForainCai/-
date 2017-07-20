@@ -62,8 +62,8 @@
                     </div>
                 </div><!--avatar-->
                 <div class="userdata">
-                	<h4>Juan</h4>
-                    <span class="email">youremail@yourdomain.com</span>
+                	<h4>${sessionScope.user.username} </h4></br>
+                    <span class="email">${sessionScope.userinfo.userinfoMail} </span>
                     <ul>
                     	<li><a href="#">编辑资料</a></li>
                         <li><a href="#">账号设置</a></li>
@@ -77,7 +77,7 @@
     
     <div class="header">
    <ul class="headermenu">
-        	<li class="current"><a href="#"><span class="icon icon-flatscreen"></span>首页</a></li>
+        	<li class="current"><a href="<%=basePath%>manager/tomain"><span class="icon icon-flatscreen"></span>首页</a></li>
             <li><a href="#"><span class="icon icon-message"></span>查看消息</a></li>
             <li><a href="#"><span class="icon icon-chart"></span>统计报表</a></li>
         </ul>
@@ -85,12 +85,12 @@
        <div class="headerwidget">
         	<div class="earnings">
             	<div class="one_half">
-                	<h4>Today's Earnings</h4>
-                    <h2>$640.01</h2>
+                	<h4>今天成交金额</h4>
+                    <h2>$640</h2>
                 </div><!--one_half-->
                 <div class="one_half last alignright">
-                	<h4>Current Rate</h4>
-                    <h2>53%</h2>
+                	<h4>今天成交量 </h4>
+                    <h2>500件</h2>
                 </div><!--one_half last-->
             </div><!--earnings-->
         </div><!--headerwidget-->
@@ -100,11 +100,11 @@
     
     <div class="vernav2 iconmenu">
     	<ul>
-        	<li><a href="#" class="editor">用户管理</a>  </li>         
+        	<li><a href="<%=basePath %>manager/findAllUser.do" class="editor">用户管理</a>  </li>         
             <li><a href="#formsub" class="editor">物品管理</a>  
             <span class="arrow"></span>
             	<ul id="formsub">
-               		<li><a href="<%=basePath %>manager/to404.do">物品类型管理</a></li>
+               		<li><a href="<%=basePath %>manager/findAllGoodsType.do">物品类型管理</a></li>
                 </ul>
             </li>   
          	<li><a href="#" class="editor">仓库管理</a>  </li>   
@@ -118,6 +118,7 @@
         <a class="togglemenu"></a>
         <br /><br />
     </div><!--leftmenu-->
+    
     
 </body>
 </html>

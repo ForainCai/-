@@ -12,4 +12,12 @@ public class TestController extends BaseController{
 	public String index(){
 		return "qianjsp/index";
 	}
+	@RequestMapping("single")
+	public String single(){
+		return "qianjsp/Single";
+	}
+	@RequestMapping("personmain")
+	public String personmain(){
+		return "qianjsp/personmain";
+	}
 }
