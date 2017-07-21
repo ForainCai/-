@@ -15,8 +15,10 @@ public interface UserInfoMapper {
 
     int updateByPrimaryKey(UserInfo record);
     
-    //通过uid查找管理员所有信息
+    //通过uid查找管理员所有信息(dfw)
   	public UserInfo findByAllUser(int  uid);
-	//通过userinfoid查找管理员所有信息
+	//通过userinfoid查找管理员所有信息(dfw)
   	public int upuserinfobyuserinfoid(int userinfoid);
+	//通过userinfoid查找管理员所有信息(dfw)
+  	public int upuserinfo(UserInfo userinfo);
 }

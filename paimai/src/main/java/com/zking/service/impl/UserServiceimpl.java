@@ -33,4 +33,30 @@ public class UserServiceimpl implements UserService{
 		
 		return usermapper.findAllUser();
 	}
+
+	@Override
+	public boolean updateuser(User u) {
+		int a=usermapper.updateuser(u);
+		if (a==1) {
+			return true;
+		}else {			
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateuserpassword(User u) {
+		int a=usermapper.updateuserpassword(u);
+		if (a==1) {
+			return true;
+		}else {			
+			return false;
+		}
+	}
+
+	@Override
+	public User findbyuid(int uid) {
+		User user=usermapper.findbyuid(uid);
+		return user;
+	}
 }

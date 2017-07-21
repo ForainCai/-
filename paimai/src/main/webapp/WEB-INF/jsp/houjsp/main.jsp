@@ -7,12 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>404错误提示页面</title>
-<link rel="stylesheet" href="<%=basePath %>houCsscss/style.default.css" type="text/css" />
-<script type="text/javascript" src="<%=basePath %>houCssjs/plugins/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>houCssjs/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>houCssjs/plugins/jquery.cookie.js"></script>
-<script type="text/javascript" src="<%=basePath %>houCssjs/custom/general.js"></script>
+<title>主页面</title>
 </head>
 <body>
   <div class="centercontent">
@@ -22,13 +17,10 @@
    		 </div>  
     	<div class="welinfo">
     		<span><img src="<%=basePath %>houCss/images/time.png" alt="时间" /></span>
-   			 <h4>您上次登录的时间：${sessionScope.userinfo.userinfoTime}（不是您登录的？<a href="#">请点这里）</a></h4>
+   			 <h4>您上次登录的时间：${sessionScope.userinfo.userinfoTime}</h4>
+   			 </br>
+   			 <h4 style="color: red">（不是您登录的？<a href="<%=basePath %>manager/toupdategeren.do" style="color: red">请点这里）</a></h4>
     	</div>	
-    	<div style="display: none">
-    			<form action="" method="post">
-    				<input type="text" >
-    			</form>
-    	</div>
 	</div><!--bodywrapper-->
 </body>
 </html>

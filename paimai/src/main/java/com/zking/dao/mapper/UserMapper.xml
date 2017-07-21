@@ -144,5 +144,21 @@
   <select id="findAllUser" resultType="com.zking.pojo.User">
   	select * from user
   </select>
+  <update id="updateuser" parameterType="com.zking.pojo.User">
+    update user
+    set 
+    name = #{name}
+    where uid = #{uid}
+  </update>
+  <update id="updateuserpassword" parameterType="com.zking.pojo.User">
+    update user
+    set 
+  	name = #{name},
+    password = #{password}
+    where uid = #{uid}
+  </update>
+  <select id="findbyuid" resultMap="BaseResultMap" parameterType="com.zking.pojo.User">
+  	select * from user where uid = #{uid}
+  </select>
 </mapper>
  
