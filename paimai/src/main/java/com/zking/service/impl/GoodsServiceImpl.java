@@ -34,4 +34,10 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodss;
 	}
 
+	@Override
+	public List<Goods> findAllGoodsByGoodsStatus(String goods_status) throws Exception {
+		List<Goods> goodss = newGoodsMapper.findAllGoodsByGoodsStatus(goods_status);
+		return goodss;
+	}
+
 }

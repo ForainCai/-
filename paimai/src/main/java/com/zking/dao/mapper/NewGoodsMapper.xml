@@ -9,6 +9,9 @@
 		<association property="goodstype" resultMap="goodstype">
 			<id property="goodstype_id" column="goodstype_id"/>
 		</association>
+		<association property="goodsstatus" resultMap="goodsstatus">
+			<id property="goodsstatus_id" column="goodsstatus_id"/>
+		</association>
 	</resultMap>
 	<resultMap  id="goods" type="com.zking.enetity.admin.Goods">
 		<result column="goods_id" property="goodsId" />
@@ -28,9 +31,16 @@
   		<result column="goodstype_id" property="goodstype_id" />
 		<result column="goodstype_name" property="goodstype_name" />
   	</resultMap>
+  	<resultMap type="com.zking.pojo.GoodsStatus" id="goodsstatus">
+  		<result column="goodsstatus_id" property="goodsstatus_id" />
+		<result column="goodsstatus_name" property="goodsstatus_name" />
+  	</resultMap>
   	<select id="findAllGoods" resultMap="goodsI">
-  		select * from goods g,user u,goodstype t where g.uid = u.uid and t.goodstype_id = g.goodstype_id
+  		select * from goods g,user u,goodstype t,goodsstatus s where g.uid = u.uid and t.goodstype_id = g.goodstype_id and g.goods_status = s.goodsstatus_id
   	</select>
-  	
+  	<select id="findAllGoodsByGoodsStatus" resultMap="goodsI">
+  		select * from goods g,user u,goodstype t,goodsstatus s where g.uid = u.uid and t.goodstype_id = g.goodstype_id and g.goods_status = s.goodsstatus_id and 
+  		s.goodsstatus_name=#{goodsstatus_name}
+  	</select>
   
 </mapper>

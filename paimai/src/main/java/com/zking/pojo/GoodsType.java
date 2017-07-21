@@ -36,9 +36,4 @@ public class GoodsType {
 		return "GoodsType [goodstype_id=" + goodstype_id + ", goodstype_name=" + goodstype_name + "]";
 	}
 	
-	
-	
-	
-	
-	
 }

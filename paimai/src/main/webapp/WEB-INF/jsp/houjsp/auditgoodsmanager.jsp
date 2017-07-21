@@ -41,32 +41,30 @@
                     <thead>
                         <tr>
                             <th class="head0">物品名</th>
-                            <th class="head1">物品所在地</th>
                             <th class="head0">物品类型</th>
-                            <th class="head0">物品拥有人</th>
-                            <th class="head1">物品审核状态</th>
-                            <th class="head0">物品备注</th>
+                            <th class="head1">物品拥有人</th>
+                            <th class="head0">物品审核状态</th>
+                            <th class="head1">操作</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th class="head0">物品名</th>
-                            <th class="head1">物品所在地</th>
                             <th class="head0">物品类型</th>
-							<th class="head0">物品拥有人</th>
-                            <th class="head1">物品审核状态</th>
-                            <th class="head0">物品备注</th>
+							<th class="head1">物品拥有人</th>
+                            <th class="head0">物品审核状态</th>
+                            <th class="head1">操作</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <c:forEach items="${goodss }" var="goodss">
+                        <c:forEach items="${goodssByStatus }" var="goodssByStatus">
 	                        <tr class="gradeX">
-	                        	<td>${goodss.goodsName }</td>
-	                            <td>${goodss.goodsPlace }</td>
-	                            <td>${goodss.goodstype.goodstype_name }</td>
-	                            <td>${goodss.user.username }</td>
-	                            <td>${goodss.goodsstatus.goodsstatus_name }</td>
-	                            <td>${goodss.godsInfo }</td>
+	                        	<td>${goodssByStatus.goodsName }</td>
+	                            <td>${goodssByStatus.goodstype.goodstype_name }</td>
+	                            <td>${goodssByStatus.user.username }</td>
+	                            <td>${goodssByStatus.goodsstatus.goodsstatus_name }</td>
+	                            <td style="width:120px;"><center>
+                            <a href="" class="stdbtn btn_red"><span>审核</span></a></center></td>
 	                        </tr>
                         </c:forEach>
                     </tbody>

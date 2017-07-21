@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -69,7 +70,22 @@ public class AdminController extends BaseController{
 		map.addAttribute("goodss", goodss);
 		return new ModelAndView("houjsp/goodsmanager");
 	}
-	
+	/**
+	 * 通过“未审核”字段查询所有未审核的物品
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping("/findAllGoodsByGoodsStatus")
+	public String findAllGoodsByGoodsStatus(ModelMap map){
+		List<Goods> goodssByStatus = null;
+		try {
+			goodssByStatus = goodsService.findAllGoodsByGoodsStatus("未审核");
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+		}
+		map.addAttribute("goodssByStatus", goodssByStatus);
+		return "houjsp/auditgoodsmanager";
+	}
 	
 	/**
 	 * 查找物品全部类型
@@ -126,6 +142,6 @@ public class AdminController extends BaseController{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
+		return "redirect:findAllGoodsType";
 	}
 }

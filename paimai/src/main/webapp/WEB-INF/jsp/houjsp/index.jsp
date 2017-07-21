@@ -100,14 +100,14 @@
     
     <div class="vernav2 iconmenu">
     	<ul>
-        	<li><a href="<%=basePath %>manager/findAllUser.do" class="editor">用户管理</a>  </li>         
+        	<li><a href="<%=basePath %>manager/findAllUser.do" class="editor">用户管理</a></li>         
             <li><a href="#formsub" class="editor">物品管理</a>  
             <span class="arrow"></span>
             	<ul id="formsub">
                		<li><a href="<%=basePath %>manager/findAllGoodsType.do">物品类型管理</a></li>
                 </ul>
             </li>   
-         	<li><a href="#" class="editor">仓库管理</a>  </li>   
+         	<li><a href="#" class="editor">仓库管理</a></li>   
          	<li><a href="#formsub2" class="editor">会场管理</a>  
             <span class="arrow"></span>
             	<ul id="formsub2">

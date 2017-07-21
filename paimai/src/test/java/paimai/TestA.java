@@ -1,6 +1,7 @@
 package paimai;
 
 import java.util.List;
+
 import java.util.logging.Logger;
 
 import org.springframework.context.ApplicationContext;
@@ -15,15 +16,15 @@ public class TestA {
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring-mybatis.xml");
-		NewUserService us = (NewUserService) context.getBean("nusi");
-		List<User> users = null;
+		GoodsService gs = (GoodsService) context.getBean("gsi");
+		List<Goods> goods = null;
 		try {
-			users = us.findAllUser();
+			goods = gs.findAllGoodsByGoodsStatus("未审核");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		for (User user : users) {
-			System.out.println(user);
+		for (Goods goods2 : goods) {
+			System.out.println(goods2);
 		}
 	}
 }
