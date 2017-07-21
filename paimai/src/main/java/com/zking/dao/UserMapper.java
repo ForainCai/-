@@ -25,5 +25,9 @@ public interface UserMapper {
     
   	public User findByUsernamePasswod(User u);
   	
-
+  	//前台修改pwd
+  	int updateByusername (User u);
+  	
+  	//验证旧密码
+  	User checkOldPwd(User u);
 }

@@ -144,5 +144,21 @@
   <select id="findAllUser" resultType="com.zking.pojo.User">
   	select * from user
   </select>
+  <!-- 前台修改pwd -->
+  <update id="updateByusername" parameterType="com.zking.pojo.User">
+	update user
+	<set>
+	<if test="password != null">
+		password = #{password,jdbcType=VARCHAR},
+	</if>
+	</set>
+	where username=#{username,jdbcType=VARCHAR}
+  </update>
+	<!-- end-前台修改pwd -->
+	<!-- 验证旧密码 -->
+		<select id="checkOldPwd" parameterType="com.zking.pojo.User" resultMap="BaseResultMap">
+			select * from user where username=#{username,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR}
+		</select>
+	<!-- end-验证旧密码 -->
 </mapper>
  
