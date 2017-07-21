@@ -12,7 +12,6 @@
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.cookie.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>houCss/js/custom/general.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/custom/tables.js"></script>
 <!--[if IE 9]>
     <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>

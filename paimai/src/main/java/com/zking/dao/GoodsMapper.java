@@ -2,6 +2,8 @@ package com.zking.dao;
 
 import java.util.List;
 
+
+
 import com.zking.pojo.Goods;
 
 public interface GoodsMapper {

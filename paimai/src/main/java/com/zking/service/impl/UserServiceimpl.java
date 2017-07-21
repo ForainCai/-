@@ -2,6 +2,10 @@ package com.zking.service.impl;
 
 import java.util.List;
 
+
+
+
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -14,7 +18,6 @@ import com.zking.service.UserService;
 public class UserServiceimpl implements UserService{
 	@Resource 
 	private UserMapper usermapper;
-	
 	public boolean findByUsernamePasswod(User u) {
 		User user=usermapper.findByUsernamePassword(u);
 		if (user!=null) {
@@ -30,7 +33,8 @@ public class UserServiceimpl implements UserService{
 		return user;
 	}
 	public List<User> findAllUser() throws Exception {
-		
-		return usermapper.findAllUser();
+		List<User> users = usermapper.findAllUser();
+		return users;
 	}
+
 }

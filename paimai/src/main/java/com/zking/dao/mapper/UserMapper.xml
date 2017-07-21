@@ -141,7 +141,7 @@
   <select id="findByUsernamePassword" resultMap="BaseResultMap" parameterType="com.zking.pojo.User">
   	select uid,username,usertype,name,password,userinfo_id from user where username=#{username,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR} and usertype=#{usertype,jdbcType=INTEGER}
   </select>
-  <select id="findAllUser" resultType="com.zking.pojo.User">
+  <select id="findAllUser" resultMap="BaseResultMap">
   	select * from user
   </select>
 </mapper>

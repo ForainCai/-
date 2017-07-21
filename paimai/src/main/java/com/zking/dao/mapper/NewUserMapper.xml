@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.dao.NewUserMapper" >
+	<resultMap type="com.zking.enetity.admin.User" id="userI" extends="user">
+		<association property="usertype" resultMap="usertype">
+			<id column="usertype_id" property="usertypeId" />
+		</association>
+		<association property="userinfo" resultMap="userinfo">
+	    	<id column="userinfo_id" property="userinfoId" />
+		</association>
+		<association property="usercredit" resultMap="usercredit">
+	    	<id column="usercredit_id" property="usercreditId" />
+		</association>
+		<association property="userasset" resultMap="userasset">
+	    	<id column="userasset_id" property="userassetId" />
+		</association>
+	</resultMap>
+  	<resultMap id="user" type="com.zking.enetity.admin.User" >
+	    <result column="uid" property="uid" />
+	    <result column="username" property="username" />
+	    <result column="name" property="name" />
+	    <result column="password" property="password" />
+	    <result column="reg_time" property="regTime" />
+  	</resultMap>
+  	<resultMap id="usertype" type="com.zking.pojo.UserType" >
+	    <result column="usertype_id" property="usertypeId" />
+	    <result column="usertype_name" property="usertypeName" />
+  	</resultMap>
+  	<resultMap id="userinfo" type="com.zking.pojo.UserInfo" >
+	    <result column="userinfo_id" property="userinfoId" />
+	    <result column="userinfo_cime" property="userinfoTime" />
+	    <result column="userinfo_card" property="userinfoCard" />
+	    <result column="userinfo_mail" property="userinfoMail" />
+	    <result column="userinfo_phone" property="userinfoPhone" />
+	    <result column="userinfo_sex" property="userinfoSex" />
+  	</resultMap>
+  	<resultMap id="usercredit" type="com.zking.pojo.UserCredit" >
+	    <result column="usercredit_id" property="usercreditId" />
+	    <result column="usercredit_time" property="usercreditTime" />
+	    <result column="usercreditpeople_id" property="usercreditpeopleId" />
+	    <result column="usercredit_level" property="usercreditLevel" />
+  	</resultMap>
+  	<resultMap id="userasset" type="com.zking.pojo.UserAsset" >
+	    <result column="userasset_id" property="userassetId" />
+	    <result column="userasset_time" property="userassetTime" />
+	    <result column="userassetpeople_id" property="userassetpeopleId" />
+	    <result column="userasset_level" property="userassetLevel" />
+  	</resultMap>
+  	<select id="findAllUser" resultMap="userI">
+  	select * from user u,usertype t,userinfo i,userasset a,usercredit c where u.usertype = t.usertype_id 
+  	and u.userinfo_id = i.userinfo_id and u.userasset_id = a.userasset_id and u.usercredit_id = c.usercredit_id
+  	</select>
+</mapper>
+ 
