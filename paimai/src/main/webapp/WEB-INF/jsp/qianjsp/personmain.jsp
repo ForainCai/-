@@ -63,6 +63,7 @@
 		</div>
 		</div>
 	<!--标题按钮-->
-	<%@ include file="pwdupdate.jsp" %>
+	<!-- 密码修改 -->
+	<%@ include file="pwdupdate.jsp" %>	
 </body>
 </html>

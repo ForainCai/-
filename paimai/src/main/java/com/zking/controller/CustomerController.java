@@ -1,6 +1,6 @@
 package com.zking.controller;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,22 +8,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.JsonObject;
+import com.zking.controller.base.BaseController;
 import com.zking.pojo.City;
+import com.zking.pojo.Goods;
 import com.zking.pojo.GoodsType;
 import com.zking.pojo.Province;
 import com.zking.pojo.User;
 import com.zking.service.CityService;
+import com.zking.service.GoodsService;
 import com.zking.service.GoodsTypeService;
 import com.zking.service.ProvinceService;
+import com.zking.util.Tools;
 
 @Controller
 @RequestMapping("/customer")
-public class CustomerController {
+public class CustomerController extends BaseController {
+	
 	
 	@Resource
 	private ProvinceService proviceService;
@@ -33,6 +38,9 @@ public class CustomerController {
 	
 	@Resource
 	private GoodsTypeService goodsTypeService;
+	
+	@Resource
+	private GoodsService goodsService;
 	
 	
 	@RequestMapping(value="/toProvince")
@@ -44,29 +52,60 @@ public class CustomerController {
 	@RequestMapping(value="/topictureOnload")
 	public Object toPictureLoad(	HttpServletRequest request){
 		
+//		return "qianjsp/Test";
 		return "qianjsp/pictureLoad";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/checkPicture")
+	public Object checkPicture(Goods good,HttpServletRequest request) throws IOException{
+		
+		HttpSession session  = request.getSession();
+		
+		User user1 = new User();
+		user1.setUid(2);
+		session.setAttribute("user", user1);
+		
+		
+		User user = (User) session.getAttribute("user");
+		//上传图片
+     	JsonObject json = Tools.upload(request);
+     	String msg = json.get("msg").getAsString();
+     	if(msg.equals("上传成功")){
+     		String filename = json.get("filename").getAsString();
+     		String index = "/";
+     		StringBuffer str = new StringBuffer(filename);
+     		str.insert(0, index);
+     		
+     		good.setGoodsPicture(str.toString());
+     		good.setUid(user.getUid());
+     		good.setGoodsStatus(0);
+     		int result = goodsService.customerInsertGoods(good);
+     		logger.info(result);
+     		if(result==1){
+     			return json;
+     		}
+     	}
+	   return  json; 
+		
 	}
 
 	
 	@ResponseBody
 	@RequestMapping(value="/findAllGoodType" ,method=RequestMethod.POST,produces={"application/json;charset=UTF-8"})
 	public List<GoodsType> findAllGoodType() throws Exception{
-		
 			return goodsTypeService.findAllGoodsType();
 	}
-	
 	
 	@ResponseBody
 	@RequestMapping(value="/findAllProvince" ,method=RequestMethod.POST,produces={"application/json;charset=UTF-8"})
 	public List<Province> findAllProvince(){
-		
 		return proviceService.findAllProvince();
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/findAllCity" ,method=RequestMethod.POST,produces={"application/json;charset=UTF-8"})
 	public List<City> findeAllCity(int pid){
-		
 		return cityService.findAllCity(pid);
 	}
 	

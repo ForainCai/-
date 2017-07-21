@@ -2,6 +2,8 @@ package com.zking.dao;
 
 import java.util.List;
 
+
+
 import com.zking.pojo.Goods;
 
 public interface GoodsMapper {
@@ -20,4 +22,6 @@ public interface GoodsMapper {
     int updateByPrimaryKey(Goods record);
     
 	List<Goods> findAllGoods();
+	
+	int insertGood(Goods good);
 }

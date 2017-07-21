@@ -12,7 +12,6 @@
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.cookie.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>houCss/js/custom/general.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/custom/tables.js"></script>
 <!--[if IE 9]>
     <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
@@ -48,7 +47,6 @@
                             <th class="head0">物品拥有人</th>
                             <th class="head1">物品审核状态</th>
                             <th class="head0">物品备注</th>
-                            <th class="head1">操作</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -60,7 +58,6 @@
 							<th class="head0">物品拥有人</th>
                             <th class="head1">物品审核状态</th>
                             <th class="head0">物品备注</th>
-                            <th class="head1">操作</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -68,13 +65,11 @@
 	                        <tr class="gradeX">
 	                        	<td>${goodss.goodsName }</td>
 	                            <td>${goodss.goodsPlace }</td>
-	                            <td>xx</td>
-	                            <td>xx</td>
-	                            <td>xx</td>
-	                            <td>${goodss.goodstypeId }</td>
+	                            <td>${goodss.goodstype.goodstype_name }</td>
+	                            <td>XXXXXXX</td>
+	                            <td>${goodss.user.username }</td>
+	                            <td>${goodss.goodsStatus }</td>
 	                            <td>${goodss.godsInfo }</td>
-	                            <td class="head1" style="width:120px;"><center><button class="stdbtn btn_blue">修改</button>&nbsp;&nbsp;
-	                            <button class="stdbtn btn_blue">删除</button></center></td>
 	                        </tr>
                         </c:forEach>
                     </tbody>

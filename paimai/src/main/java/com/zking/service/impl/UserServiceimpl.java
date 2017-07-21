@@ -30,8 +30,8 @@ public class UserServiceimpl implements UserService{
 		return user;
 	}
 	public List<User> findAllUser() throws Exception {
-		
-		return usermapper.findAllUser();
+		List<User> users = usermapper.findAllUser();
+		return users;
 	}
 
 	@Override
