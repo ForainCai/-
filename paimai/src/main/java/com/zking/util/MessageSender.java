@@ -17,7 +17,6 @@ public class MessageSender {
 
     public void send(final String text) {
         try {
-        	
             jmsTemplate.setDefaultDestination(destination);
             jmsTemplate.convertAndSend(text);
             logger.info("发送消息 : " + text);

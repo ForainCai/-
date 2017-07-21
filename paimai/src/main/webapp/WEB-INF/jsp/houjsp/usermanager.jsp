@@ -12,7 +12,6 @@
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.cookie.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>houCss/js/custom/general.js"></script>
 <script type="text/javascript" src="<%=basePath %>houCss/js/custom/tables.js"></script>
 <!--[if IE 9]>
     <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
@@ -44,7 +43,10 @@
                             <th class="head0">用户名</th>
                             <th class="head1">用户类型</th>
                             <th class="head0">昵称</th>
-                            <th class="head1">密码</th>
+                            <th class="head1">性别</th>
+                            <th class="head0">注册时间</th>
+                            <th class="head1">邮箱</th>
+                            <th class="head0">电话</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -52,16 +54,22 @@
                             <th class="head0">用户名</th>
                             <th class="head1">用户类型</th>
                             <th class="head0">昵称</th>
-                            <th class="head1">密码</th>
+                            <th class="head1">性别</th>
+                            <th class="head0">注册时间</th>
+                            <th class="head1">邮箱</th>
+                            <th class="head0">电话</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         <c:forEach items="${users }" var="users">
 	                        <tr class="gradeX">
 	                            <td>${users.username }</td>
-	                            <td>${users.usertype }</td>
+	                            <td>${users.usertype.usertypeName }</td>
 	                            <td>${users.name }</td>
-	                            <td class="center">${users.password }</td>
+	                            <td>${users.userinfo.userinfoSex }</td>
+	                            <td>${users.regTime }</td>
+	                            <td>${users.userinfo.userinfoMail }</td>
+	                            <td>${users.userinfo.userinfoPhone }</td>
 	                        </tr>
                         </c:forEach>
                     </tbody>

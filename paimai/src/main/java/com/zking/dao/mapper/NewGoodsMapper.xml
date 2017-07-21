@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.dao.NewGoodsMapper" >
+
+	<resultMap type="com.zking.enetity.admin.Goods" id="goodsI" extends="goods">
+		<association property="user" resultMap="user">
+			<id property="uid" column="uid"/>
+		</association>
+		<association property="goodstype" resultMap="goodstype">
+			<id property="goodstype_id" column="goodstype_id"/>
+		</association>
+	</resultMap>
+	<resultMap  id="goods" type="com.zking.enetity.admin.Goods">
+		<result column="goods_id" property="goodsId" />
+		<result column="goods_name" property="goodsName" />
+		<result column="goods_place" property="goodsPlace" />
+		<result column="goods_picture" property="goodsPicture" />
+		<result column="gods_info" property="godsInfo" />
+	</resultMap>
+	<resultMap type="com.zking.enetity.admin.User" id="user">
+		<result column="uid" property="uid" />
+		<result column="username" property="username" />
+		<result column="name" property="name" />
+		<result column="password" property="password" />
+		<result column="reg_time" property="regTime" />
+	</resultMap>
+  	<resultMap type="com.zking.pojo.GoodsType" id="goodstype">
+  		<result column="goodstype_id" property="goodstype_id" />
+		<result column="goodstype_name" property="goodstype_name" />
+  	</resultMap>
+  	<select id="findAllGoods" resultMap="goodsI">
+  		select * from goods g,user u,goodstype t where g.uid = u.uid and t.goodstype_id = g.goodstype_id
+  	</select>
+  	
+  
+</mapper>
