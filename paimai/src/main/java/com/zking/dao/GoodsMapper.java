@@ -22,4 +22,6 @@ public interface GoodsMapper {
     int updateByPrimaryKey(Goods record);
     
 	List<Goods> findAllGoods();
+	
+	int insertGood(Goods good);
 }

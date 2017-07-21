@@ -34,4 +34,9 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodss;
 	}
 
+	//用户上传商品信息
+	public int customerInsertGoods(com.zking.pojo.Goods goods ) {
+		return goodsMapper.insertGood(goods);
+	}
+
 }
