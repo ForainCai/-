@@ -1,12 +1,10 @@
 package com.zking.controller.base;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +23,7 @@ import com.zking.util.MD5;
 @Controller
 @RequestMapping("/manager")
 public class ManagerController extends BaseController{
+	public HttpSession session;
 	@Resource
 	private UserService userservice;
 	@Resource
@@ -43,12 +42,16 @@ public class ManagerController extends BaseController{
 	public ModelAndView to404( ){
 		return new ModelAndView("houjsp/notfound");
 	}
+	@RequestMapping("/toupdategeren")
+	public ModelAndView toupdategeren( ){
+		return new ModelAndView("houjsp/updategeren");
+	}
 	
 	@ResponseBody
 	@RequestMapping(value="/checklogin",method=RequestMethod.POST,produces={"application/json;charset=UTF-8"})
 	public Object checklogin(User u,HttpServletRequest request){		
 		JSONObject jsonObject = new JSONObject();	
-		HttpSession session=request.getSession();
+		session=request.getSession();
 		u.setUsertype(1);	
 		u.setPassword(MD5.MD5Encode(u.getPassword()));
 		u.setUserinfoId(1);
@@ -75,4 +78,88 @@ public class ManagerController extends BaseController{
 		}
 		return jsonObject;
 	}
+	@RequestMapping("updategeren")
+	public String updategeren(HttpServletRequest request){
+		User user=(User) session.getAttribute("user");
+		int uid=user.getUid();
+		int userinfoid=user.getUserinfoId();
+		String username=request.getParameter("firstname");		
+		String userinfoPhone=request.getParameter("phone");	
+		String userinfoMail=request.getParameter("email");
+		String userinfoSex=request.getParameter("selection");
+		String password=request.getParameter("newpassword");	
+		String userinfoCard=request.getParameter("idcard");
+		if (password==""||userinfoCard=="") {
+			/**
+			 * 修改用户
+			 */
+			User user2=new User();
+			user2.setName(username);
+			user2.setUid(uid);
+			boolean b1= userservice.updateuser(user2);
+			/**
+			 * 修改用户详细信息
+			 */
+			UserInfo userinfo=new UserInfo();
+			userinfo.setUserinfoMail(userinfoMail);
+			userinfo.setUserinfoPhone(userinfoPhone);
+			userinfo.setUserinfoSex(userinfoSex);
+			userinfo.setUserinfoId(userinfoid);
+			boolean b2 =userinfoservice.upuserinfo(userinfo);
+			if (b2&&b1) {
+				User updateuser=userservice.findbyuid(uid);
+				UserInfo updateuserinfo=userinfoservice.findByAllUser(userinfoid);
+				session.removeAttribute("user");
+				session.removeAttribute("userinfo");
+				session.setAttribute("user",updateuser);
+				User u=(User) session.getAttribute("user");
+				session.setAttribute("userinfo",updateuserinfo);
+				session.setAttribute("mgs", "修改成功");
+				return "redirect:/manager/toupdategeren";
+			}else {
+				session.setAttribute("mgs", "修改失败");	
+				return "redirect:/manager/toupdategeren";
+			}
+		}else {
+			/**
+			 * 查找身份证和用户名匹配
+			 */
+			if (userinfoCard.equals(userinfoservice.findByAllUser(userinfoid).getUserinfoCard())) {
+				/**
+				 * 修改用户
+				 */
+				User user2=new User();
+				user2.setName(username);
+				user2.setUid(uid);
+				user2.setPassword(MD5.MD5Encode(password));
+				boolean b1= userservice.updateuserpassword(user2);
+				/**
+				 * 修改用户详细信息
+				 */
+				UserInfo userinfo=new UserInfo();
+				userinfo.setUserinfoMail(userinfoMail);
+				userinfo.setUserinfoPhone(userinfoPhone);
+				userinfo.setUserinfoSex(userinfoSex);
+				userinfo.setUserinfoId(userinfoid);
+				boolean b2 =userinfoservice.upuserinfo(userinfo);
+				if (b2&&b1) {
+					User updateuser=userservice.findbyuid(uid);
+					UserInfo updateuserinfo=userinfoservice.findByAllUser(userinfoid);
+					session.removeAttribute("user");
+					session.removeAttribute("userinfo");
+					session.setAttribute("user",updateuser);
+					session.setAttribute("userinfo",updateuserinfo);
+					session.setAttribute("mgs", "修改成功");	
+					return "redirect:/manager/toupdategeren";
+				}else {
+					session.setAttribute("mgs", "修改失败");
+					return "redirect:/manager/toupdategeren";
+				}
+			}else {
+				session.setAttribute("mgs", "身份证输入错误");
+				return "redirect:/manager/toupdategeren";
+			}
+		}
+	}
+	
 }
