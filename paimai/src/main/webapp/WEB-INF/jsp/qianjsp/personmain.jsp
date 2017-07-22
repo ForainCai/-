@@ -10,36 +10,6 @@
 <%@ include file="head.jsp" %>
 </head>
 <body>
-
-	<!--
-	<div class="top-header">
-		<div class="container">
-			<div class="top-header-main">
-				<div>
-					<div class="cart box_1" style="float: right;">
-						<div class="drop">
-							<div class="box" style="float: right;">
-								<select tabindex="4" class="dropdown drop">
-									<option value="" class="label">用户名</option>
-									<option value="1">个人信息</option>
-									<option value="2">修改密码</option>
-								</select>
-							</div>
-						</div>
-						<a href="#" style="text-decoration:none">
-							<div class="total">
-								<span class="simpleCart_total"></span>
-							</div>
-								<img src="<%=basePath %>qianCss/images/cart-1.png" alt="" />
-						</a>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	-->
 	<!-- logo -->
 	<div class="logo">
 		<h1 style="font-size:36px">XXX拍卖网</h1>
@@ -63,7 +33,6 @@
 		</div>
 		</div>
 	<!--标题按钮-->
-	<!-- 密码修改 -->
-	<%@ include file="pwdupdate.jsp" %>	
+	<%@ include file="pwdupdate.jsp" %>
 </body>
 </html>

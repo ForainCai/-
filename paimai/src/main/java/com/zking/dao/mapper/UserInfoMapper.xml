@@ -113,4 +113,13 @@
     set userinfo_time = now()
     where userinfo_id = #{userinfoid}
   </update>
+  <!-- 修改个人信息 -->
+  <update id="udInfo" parameterType="com.zking.pojo.UserInfo">
+  update userinfo 
+  <set>
+  	userinfo_mail=#{userinfoMail,jdbcType=VARCHAR},
+  	userinfo_phone=#{userinfoPhone,jdbcType=VARCHAR}
+  </set>
+  </update>
+  <!-- end-修改个人信息 -->
 </mapper>

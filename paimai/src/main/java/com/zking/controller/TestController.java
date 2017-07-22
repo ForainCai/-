@@ -6,15 +6,21 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonObject;
 import com.zking.controller.base.BaseController;
+import com.zking.dao.UserInfoMapper;
 import com.zking.dao.UserMapper;
 import com.zking.pojo.User;
+import com.zking.pojo.UserInfo;
 
 @Controller
 @RequestMapping("test")
@@ -33,7 +39,7 @@ public class TestController extends BaseController{
 	}
 	@Resource
 	private UserMapper usermapper;
-	@RequestMapping(value="updatepwd" ,method= RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@RequestMapping(value="updatepwd" ,method=RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Object test(HttpServletRequest req) throws UnsupportedEncodingException{
 		req.setCharacterEncoding("utf-8");
@@ -51,7 +57,7 @@ public class TestController extends BaseController{
 		}
 		return json;
 	}
-	@RequestMapping(value="checkoldpwd" ,method= RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@RequestMapping(value="checkoldpwd" ,method=RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Object test1(HttpServletRequest req) throws UnsupportedEncodingException{
 		req.setCharacterEncoding("utf-8");
@@ -70,5 +76,14 @@ public class TestController extends BaseController{
 			}
 		}
 		return json;
+	}
+	@Resource
+	private UserInfoMapper userinfomapper;
+	UserInfo ui = new UserInfo();
+	@RequestMapping("updateinfo")
+	public Object test2(HttpServletRequest req,UserInfo ui,ModelAndView mv) throws UnsupportedEncodingException{
+		req.setCharacterEncoding("utf-8");
+		userinfomapper.udInfo(ui);
+		return "修改成功";
 	}
 }

@@ -65,6 +65,7 @@
 	    	    		 $("#error").attr("style","display:none");
 	    	    		 $("#sub").removeAttr("style");
 	    	    		 $("#sub").removeAttr("disabled");
+	    	    		 $("#error").attr("style","display:none");
 	    	    	 }else if(data.msg2==0){	    	    		 
 	    	    		$("#error").attr("style","display:block;color: red;font-size: 18px");
 	    	    		$("#sub").attr("disabled","disabled");
@@ -76,6 +77,7 @@
 	    	});
 		})
 	});
+	
 </script>
 </head>
 <body>
@@ -104,14 +106,15 @@
 	</div>
 	<!--account-end-->
 	<!-- changeinfo -->
+	<form action="<%=basePath %>test/updateinfo" method="post">
 	<div id="changeinfo" class="hidden">
 		<div class="container">
 			<div class="account-main">
 				<div class="col-md-6 account-left">
 					<div class="account-bottom">
-						<input placeholder="昵称" type="text" tabindex="1" required>
-						<input placeholder="邮箱" type="text" tabindex="2" required>
-						<input placeholder="手机号" type="text" tabindex="3" required>
+						<input name="username" placeholder="昵称" type="text" tabindex="1" required>
+						<input name="userinfoMail" placeholder="邮箱" type="text" tabindex="2" required>
+						<input name="userinfoPhone" placeholder="手机号" type="text" tabindex="3" required>
 						<div class="address">
 							<input type="submit" value="提交">
 						</div>
@@ -121,6 +124,7 @@
 			</div>
 		</div>
 	</div>
+	</form>
 	<!-- changeinfo-end -->
 </body>
 </html>

@@ -32,4 +32,8 @@ public interface UserMapper {
   	
   	//验证旧密码
   	User checkOldPwd(User u);
+  	
+  	//修改用户昵称
+  	int udUsername(String username1, String username2);
+  	
 }

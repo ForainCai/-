@@ -160,5 +160,14 @@
 			select * from user where username=#{username,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR}
 		</select>
 	<!-- end-验证旧密码 -->
+	<!-- 修改用户昵称 -->
+	<update id="udUsername" parameterType="com.zking.pojo.User">
+		update user 
+		<set>
+			username=#{username,jdbcType=VARCHAR}
+		</set>
+			where username=#{username,jdbcType=VARCHAR}
+	</update>
+	<!-- end-修改用户昵称 -->
 </mapper>
  
