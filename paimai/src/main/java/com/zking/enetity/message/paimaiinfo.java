@@ -5,13 +5,13 @@ public class paimaiinfo {
 	private int user_id;//用户id
 	private int good_id;//商品编号
 	private double money;//金额
-	private int addmoney;//每次增加金额
+	private double addmoney;//每次增加金额
 	
 	
 	public paimaiinfo() {
 		super();
 	}
-	public paimaiinfo(int buylist_id, int user_id, int good_id, double money, int addmoney) {
+	public paimaiinfo(int buylist_id, int user_id, int good_id, double money, double addmoney) {
 		super();
 		this.buylist_id = buylist_id;
 		this.user_id = user_id;
@@ -61,12 +61,12 @@ public class paimaiinfo {
 	}
 
 
-	public int getAddmoney() {
+	public double getAddmoney() {
 		return addmoney;
 	}
 
 
-	public void setAddmoney(int addmoney) {
+	public void setAddmoney(double addmoney) {
 		this.addmoney = addmoney;
 	}
 

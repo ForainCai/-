@@ -39,9 +39,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-6 top-header-left">
 					<div class="cart box_1" style="width:100px;height: 50px;">			
 						<% 
-						User user = new User();
-						user.setUsername("tom");
-						session.setAttribute("user",user);
+						//session.getAttribute("user");
+						User user = (User)session.getAttribute("user");
 						if(null == user) {%>		
 						<a class="clearfix" href="#" style="font-size:15px;color:WHITE;text-decoration:none;float: left;margin-top: 15px;">登录</a>
 						<a class="clearfix" href="#" style="font-size:15px;color:WHITE;text-decoration:none;float: right;margin-top: 15px;">注册</a>
@@ -50,7 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="drop">
 							<div class="box" style="float: right;">
 								<select tabindex="4" class="dropdown drop">
-									<option value="" class="label" name="username"><%=user.getUsername() %></option>
+									<option value="" class="label"><%=user.getName() %></option>
 									<option value="1">个人信息</option>
 									<option value="2">修改密码</option>
 								</select>

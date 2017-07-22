@@ -78,19 +78,19 @@
     <div class="header">
    <ul class="headermenu">
         	<li class="current"><a href="<%=basePath%>manager/tomain"><span class="icon icon-flatscreen"></span>首页</a></li>
-            <li><a href="<%=basePath%>manager/tomain"><span class="icon icon-message"></span>查看消息</a></li>
-            <li><a href="#"><span class="icon icon-chart"></span>统计报表</a></li>
+            <li><a href="#"><span class="icon icon-message"></span>查看消息</a></li>
+            <li><a href="<%=basePath%>manager/todatecount"><span class="icon icon-chart"></span>统计报表</a></li>
         </ul>
         
        <div class="headerwidget">
         	<div class="earnings">
             	<div class="one_half">
-                	<h4>今天成交金额</h4>
-                    <h2>$640</h2>
+                	<h4>今日成交金额</h4>
+                    <h2>$:${sessionScope.count.allprice}</h2>
                 </div><!--one_half-->
                 <div class="one_half last alignright">
-                	<h4>今天成交量 </h4>
-                    <h2>500件</h2>
+                	<h4>今日成交次数 </h4>
+                    <h2>${sessionScope.count.allcount}次</h2>
                 </div><!--one_half last-->
             </div><!--earnings-->
         </div><!--headerwidget-->

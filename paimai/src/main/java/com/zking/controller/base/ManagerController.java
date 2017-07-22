@@ -2,6 +2,9 @@ package com.zking.controller.base;
 
 
 
+import java.util.Iterator;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zking.enetity.admin.Count;
 import com.zking.pojo.User;
 import com.zking.pojo.UserInfo;
 import com.zking.service.UserService;
@@ -47,6 +51,11 @@ public class ManagerController extends BaseController{
 		return new ModelAndView("houjsp/updategeren");
 	}
 	
+	@RequestMapping("/todatecount")
+	public ModelAndView todatecount( ){
+		return new ModelAndView("houjsp/datecount");
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="/checklogin",method=RequestMethod.POST,produces={"application/json;charset=UTF-8"})
 	public Object checklogin(User u,HttpServletRequest request){		
@@ -71,6 +80,8 @@ public class ManagerController extends BaseController{
 			if (b) {				
 				session.setAttribute("user",user);
 				session.setAttribute("userinfo",userinfo);
+				Count count=userservice.findcount();
+				session.setAttribute("count",count);
 				jsonObject.put("msg",1);
 			}
 		}else{
@@ -161,5 +172,22 @@ public class ManagerController extends BaseController{
 			}
 		}
 	}
-	
+	@ResponseBody
+	@RequestMapping(value="/dayDate",method=RequestMethod.POST,produces={"application/json;charset=UTF-8"})
+	public List<Count> dayDate(){	
+			List<Count> list=userservice.finddaycount();
+			return list;
+	}
+	@ResponseBody
+	@RequestMapping(value="/weekDate",method=RequestMethod.POST,produces={"application/json;charset=UTF-8"})
+	public List<Count> weekDate(){	
+			List<Count> list=userservice.findweekcount();
+			return list;
+	}
+	@ResponseBody
+	@RequestMapping(value="/monthDate",method=RequestMethod.POST,produces={"application/json;charset=UTF-8"})
+	public List<Count> monthDate(){	
+			List<Count> list=userservice.findmonthcount();
+			return list;
+	}
 }

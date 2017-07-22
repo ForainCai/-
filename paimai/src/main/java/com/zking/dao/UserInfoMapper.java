@@ -19,6 +19,9 @@ public interface UserInfoMapper {
   	public UserInfo findByAllUser(int  uid);
 	//通过userinfoid查找管理员所有信息(dfw)
   	public int upuserinfobyuserinfoid(int userinfoid);
+  	
+  	//修改用户个人信息资料
+  	int udInfo(UserInfo ui);
 	//通过userinfoid查找管理员所有信息(dfw)
   	public int upuserinfo(UserInfo userinfo);
 }
