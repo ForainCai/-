@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.CustomerBuyListMaper">
+	    
+    <!-- 根据goods_id查询集合 -->
+ 	<select id="findAllBuyList" parameterType="com.zking.pojo.Goods" resultMap="buy" >
+ 	    
+ 		select * from goods good ,buylist buy where good.goods_id=buy.goods_id and good.goods_place=#{goodsPlace}
+ 		and good.goodstype_id = #{goodstypeId}
+ 		
+ 	</select>
+ 	
+ 	 <!-- 根据goods_id,goodstype查询集合 -->
+ 	<select id="fidAllBuyListByType" parameterType="com.zking.pojo.Goods" resultMap="buy" >
+ 	    
+ 		select * from goods good ,buylist buy where good.goods_id=buy.goods_id   and good.goodstype_id = #{goodstypeId}
+ 		
+ 	</select>
+ 	
+ 	 <!-- 根据goods_id,goodplace查询集合 -->
+ 	<select id="findAllBuyListByPlace" parameterType="com.zking.pojo.Goods" resultMap="buy" >
+ 	    
+ 		select * from goods good ,buylist buy where good.goods_id=buy.goods_id and good.goods_place=#{goodsPlace}
+ 		
+ 	</select>
+ 	
+ 	<resultMap type="com.zking.enetity.customer.buylist" id="buy" extends="buylist">
+ 		<association property="goods" resultMap="goods">
+ 			<id column="goods_id" property="goodsId" />
+ 		</association>
+ 	</resultMap>
+ 	
+ 	<resultMap type="com.zking.enetity.customer.buylist" id="buylist">
+ 		<id column="buylist_id" property="buylistId" jdbcType="INTEGER" />
+    <result column="buylist_price" property="buylistPrice" jdbcType="DOUBLE" />
+    <result column="buylist_man" property="buylistMan" jdbcType="INTEGER" />
+    <result column="buylist_starttime" property="buylistStarttime" jdbcType="TIMESTAMP" />
+    <result column="buylist_buytime" property="buylistBuytime" jdbcType="TIMESTAMP" />
+    <result column="buylist_endtime" property="buylistEndtime" jdbcType="TIMESTAMP" />
+    <result column="buylist_over" property="buylistOver" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+ 	</resultMap>
+ 	
+  <resultMap id="goods" type="com.zking.pojo.Goods" >
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_price" property="goodsprice" jdbcType="VARCHAR" />
+    <result column="goods_place" property="goodsPlace" jdbcType="INTEGER" />
+    <result column="goodstype_id" property="goodstypeId" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="goods_status" property="goodsStatus" jdbcType="INTEGER" />
+    <result column="gods_info" property="godsInfo" jdbcType="VARCHAR" />
+    <result column="goods_picture" property="goodsPicture" jdbcType="VARCHAR" />
+  </resultMap>
+ 	
+	    
+</mapper>

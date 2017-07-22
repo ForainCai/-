@@ -130,8 +130,8 @@ $("#tijiao").click(
 						+ '&godsInfo=' +area+ '&goodsprice=' + price,
 					success : function(data) {
 						if(data.msg=="上传成功"){
-							
 							alert(data.msg);
+							alert("请等待管理员审核！");
 							window.location.href="<%=basePath%>customer/toProvince"; 
 						}else{
 							

@@ -38,12 +38,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
 					<ul class="memenu skyblue">
-						<li class="grid"><a href="#">房产</a></li>
-						<li class="grid"><a href="#">珠宝</a></li>
-						<li class="grid"><a href="#">汽车</a></li>
-						<li class="grid"><a href="#">奢侈品</a></li>
-						<li class="grid"><a href="#">古董</a></li>
-						<li class="grid"><a href="#">其他</a></li>
+						<li class="grid"><a href="<%=basePath%>customer/toProvince">房产</a></li>
+						<li class="grid"><a href="<%=basePath%>customer/toProvince">珠宝</a></li>
+						<li class="grid"><a href="<%=basePath%>customer/toProvince">汽车</a></li>
+						<li class="grid"><a href="<%=basePath%>customer/toProvince">奢侈品</a></li>
+						<li class="grid"><a href="<%=basePath%>customer/toProvince">古董</a></li>
+						<li class="grid"><a href="<%=basePath%>customer/toProvince">其他</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -150,7 +150,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="product-bottom">
 								<h3>上架拍品</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								<h4><a class="item_add" href="<%=basePath%>customer/toProvince"><i></i></a> <span class=" item_price">$ 329</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
@@ -159,11 +159,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-2.png" alt="" /></a>
+							<a href="<%=basePath%>customer/toProvince" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-2.png" alt="" /></a>
 							<div class="product-bottom">
 								<h3>上架拍品</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								<h4><a class="item_add" href="<%=basePath%>customer/toProvince"><i></i></a> <span class=" item_price">$ 329</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
@@ -172,11 +172,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-3.png"  alt="" /></a>
+							<a href="<%=basePath%>customer/toProvince" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-3.png"  alt="" /></a>
 							<div class="product-bottom">
 								<h3>上架拍品</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								<h4><a class="item_add" href="<%=basePath%>customer/toProvince"><i></i></a> <span class=" item_price">$ 329</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
@@ -185,11 +185,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-4.png" alt="" /></a>
+							<a href="<%=basePath%>customer/toProvince" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-4.png" alt="" /></a>
 							<div class="product-bottom">
 								<h3>上架拍品</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								<h4><a class="item_add" href="<%=basePath%>customer/toProvince"><i></i></a> <span class=" item_price">$ 329</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
@@ -201,11 +201,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="product-one">
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-5.png" alt="" /></a>
+							<a href="<%=basePath%>customer/toProvince" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-5.png" alt="" /></a>
 							<div class="product-bottom">
 								<h3>上架拍品</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								<h4><a class="item_add" href="<%=basePath%>customer/toProvince"><i></i></a> <span class=" item_price">$ 329</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
@@ -214,11 +214,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-6.png" alt="" /></a>
+							<a href="<%=basePath%>customer/toProvince" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-6.png" alt="" /></a>
 							<div class="product-bottom">
 								<h3>上架拍品</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								<h4><a class="item_add" href="<%=basePath%>customer/toProvince"><i></i></a> <span class=" item_price">$ 329</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
@@ -227,11 +227,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-7.png" alt="" /></a>
+							<a href="<%=basePath%>customer/toProvince" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-7.png" alt="" /></a>
 							<div class="product-bottom">
 								<h3>上架拍品</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								<h4><a class="item_add" href="<%=basePath%>customer/toProvince"><i></i></a> <span class=" item_price">$ 329</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
@@ -240,11 +240,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-8.png" alt="" /></a>
+							<a href="<%=basePath%>customer/toProvince" class="mask"><img class="img-responsive zoom-img" src="<%=basePath %>qianCss/images/p-8.png" alt="" /></a>
 							<div class="product-bottom">
 								<h3>上架拍品</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								<h4><a class="item_add" href="<%=basePath%>customer/toProvince"><i></i></a> <span class=" item_price">$ 329</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
