@@ -53,7 +53,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="address">
 						<h5>上传须知：</h5>
 						<p>
-							常用的图片格式 <span>.bmp,.jpg,.png,.tiff,.gif,.pcx,.WMF</span> 大小不超过：3M
+							常用的图片格式 <span>.bmp&nbsp;.jpg&nbsp;.png&nbsp;.tiff&nbsp;.gif&nbsp;.pcx.WMF</span> 大小不超过：3M
+						</p>
+						<p>
+						    价格请自行估量！！！
 						</p>
 					</div>
 					
@@ -63,6 +66,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				
 				
 						<input type="text" placeholder="商品名" id="goodname" style="width: 450px;height: 40px">
+						<br><br><br>
+						
+						<input type="text" placeholder="商品自定义价格" id="goodprice" style="width: 450px;height: 40px">
 						<br><br><br>
 						
 						<input type="file" name="file" placeholder="请选择图片文件" id="file" onchange="put(this)" style="width: 450px;height: 40px">
@@ -105,8 +111,13 @@ $("#tijiao").click(
 			var type = $("#type").val();
 			var city = $("#shi").val();
 			var area = $("#area").val();
-			if (goodname == "" || $("#file").val() == ""||type == ""||city == ""||area == "") {
+			var price = $("#goodprice").val();
+			if (goodname == "" || $("#file").val() == ""||type == ""||city == ""||area == ""||price=="") {
 				alert("不能有空值");
+			}else if(price<=0){
+				alert("金额必须大于0.0");
+				
+				
 			}else {
 				$.ajaxFileUpload({
 					    secureuri : false,//安全协议  
@@ -116,7 +127,7 @@ $("#tijiao").click(
 				        async : false,  
 					    url : '<%=basePath%>customer/checkPicture?goodsName='
 						+ goodname + '&goodsPlace=' + city + '&goodstypeId=' + type
-						+ '&godsInfo=' +area,
+						+ '&godsInfo=' +area+ '&goodsprice=' + price,
 					success : function(data) {
 						if(data.msg=="上传成功"){
 							
