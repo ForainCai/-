@@ -65,7 +65,7 @@
                 	<h4>${sessionScope.user.username} </h4></br>
                     <span class="email">${sessionScope.userinfo.userinfoMail} </span>
                     <ul>
-                    	<li><a href="#">编辑资料</a></li>
+                    	<li><a href="<%=basePath %>manager/toupdategeren.do">编辑资料</a></li>
                         <li><a href="#">账号设置</a></li>
                         <li><a href="#">帮助</a></li>
                         <li><a href="<%=basePath %>manager/tologin.do">退出</a></li>
@@ -79,18 +79,18 @@
    <ul class="headermenu">
         	<li class="current"><a href="<%=basePath%>manager/tomain"><span class="icon icon-flatscreen"></span>首页</a></li>
             <li><a href="#"><span class="icon icon-message"></span>查看消息</a></li>
-            <li><a href="#"><span class="icon icon-chart"></span>统计报表</a></li>
+            <li><a href="<%=basePath%>manager/todatecount"><span class="icon icon-chart"></span>统计报表</a></li>
         </ul>
         
        <div class="headerwidget">
         	<div class="earnings">
             	<div class="one_half">
-                	<h4>今天成交金额</h4>
-                    <h2>$640</h2>
+                	<h4>今日成交金额</h4>
+                    <h2>$:${sessionScope.count.allprice}</h2>
                 </div><!--one_half-->
                 <div class="one_half last alignright">
-                	<h4>今天成交量 </h4>
-                    <h2>500件</h2>
+                	<h4>今日成交次数 </h4>
+                    <h2>${sessionScope.count.allcount}次</h2>
                 </div><!--one_half last-->
             </div><!--earnings-->
         </div><!--headerwidget-->
@@ -100,11 +100,13 @@
     
     <div class="vernav2 iconmenu">
     	<ul>
-        	<li><a href="<%=basePath %>manager/findAllUser.do" class="editor">用户管理</a>  </li>         
+        	<li><a href="<%=basePath %>manager/findAllUser" class="editor">用户管理</a>  </li>         
             <li><a href="#formsub" class="editor">物品管理</a>  
             <span class="arrow"></span>
             	<ul id="formsub">
-               		<li><a href="<%=basePath %>manager/findAllGoodsType.do">物品类型管理</a></li>
+               		<li><a href="<%=basePath %>manager/findAllGoods">物品信息</a></li>
+               		<li><a href="<%=basePath %>manager/findAllGoodsType">物品类型查询</a></li>
+               		<li><a href="<%=basePath %>manager/toAddGoodsType">物品类型添加</a></li>
                 </ul>
             </li>   
          	<li><a href="#" class="editor">仓库管理</a>  </li>   

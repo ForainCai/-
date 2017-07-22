@@ -2,6 +2,7 @@ package com.zking.dao;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.zking.pojo.GoodsType;
@@ -23,5 +24,5 @@ public interface GoodsTypeMapper {
     
     public int deleteGoodsType(int id) throws Exception;
     
-	public String addGoodsType(GoodsType gt) throws Exception;
+	public void addGoodsType(GoodsType gt) throws Exception;
 }

@@ -2,21 +2,24 @@ package com.zking.service.impl;
 
 import java.util.List;
 
+
+
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zking.dao.GoodsMapper;
-import com.zking.dao.GoodsTypeMapper;
-import com.zking.pojo.Goods;
-import com.zking.pojo.GoodsType;
+import com.zking.dao.NewGoodsMapper;
+import com.zking.enetity.admin.Goods;
 import com.zking.service.GoodsService;
 @Service("gsi")
 public class GoodsServiceImpl implements GoodsService {
 	@Resource
 	private GoodsMapper goodsMapper;
 	
+	@Resource
+	private NewGoodsMapper newGoodsMapper;
 	public GoodsMapper getGoodsMapper() {
 		return goodsMapper;
 	}
@@ -27,8 +30,19 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Override
 	public List<Goods> findAllGoods() throws Exception {
-		List<Goods> goodss = goodsMapper.findAllGoods();
+		List<Goods> goodss = newGoodsMapper.findAllGoods();
 		return goodss;
+	}
+
+	@Override
+	public List<Goods> findAllGoodsByGoodsStatus(String goods_status) throws Exception {
+		List<Goods> goodss = newGoodsMapper.findAllGoodsByGoodsStatus(goods_status);
+		return goodss;
+	}
+
+	//用户上传商品信息
+	public int customerInsertGoods(com.zking.pojo.Goods goods ) {
+		return goodsMapper.insertGood(goods);
 	}
 
 }

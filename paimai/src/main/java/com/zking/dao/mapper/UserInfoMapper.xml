@@ -111,6 +111,24 @@
   <update id="upuserinfobyuserinfoid" parameterType="com.zking.pojo.UserInfo" >
     update userinfo
     set userinfo_time = now()
-    where userinfo_id = #{userinfoid}
+    where userinfo_id = #{userinfoId}
   </update>
+  
+  <update id="upuserinfo" parameterType="com.zking.pojo.UserInfo"  >
+    update userinfo
+    set 
+      userinfo_mail = #{userinfoMail,jdbcType=VARCHAR},
+      userinfo_phone = #{userinfoPhone,jdbcType=VARCHAR},
+      userinfo_sex = #{userinfoSex,jdbcType=VARCHAR}
+    where userinfo_id = #{userinfoId}
+  </update>
+  <!-- 修改个人信息 -->
+  <update id="udInfo" parameterType="com.zking.pojo.UserInfo">
+  update userinfo 
+  <set>
+  	userinfo_mail=#{userinfoMail,jdbcType=VARCHAR},
+  	userinfo_phone=#{userinfoPhone,jdbcType=VARCHAR}
+  </set>
+  </update>
+  <!-- end-修改个人信息 -->
 </mapper>

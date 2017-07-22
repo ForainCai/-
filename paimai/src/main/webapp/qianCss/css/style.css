@@ -1494,6 +1494,7 @@ a.mask {
     outline: none;
 	font-family: 'Lato-Regular';
 }
+
 .address input[type="submit"]:hover {
     background: #000;
     transition: 0.5s all;

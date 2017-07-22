@@ -8,6 +8,7 @@
 		<result column="goods_name" property="goodsName" />
 		<result column="goods_place" property="goodsPlace" />
 		<result column="goods_state" property="goodstypeId" />
+		<result column="goods_price" property="goodsprice" />
 		<result column="gods_info" property="godsInfo" />
 	</resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.zking.pojo.Goods" >
@@ -22,9 +23,10 @@
     <result column="goods_status" property="goodsStatus" jdbcType="INTEGER" />
     <result column="gods_info" property="godsInfo" jdbcType="VARCHAR" />
     <result column="goods_picture" property="goodsPicture" jdbcType="VARCHAR" />
+    <result column="goods_price" property="goodsprice" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    goods_id, goods_name, goods_place, goodstype_id, uid, goods_status, gods_info,goods_picture
+    goods_id, goods_name, goods_place, goodstype_id, uid, goods_status, gods_info,goods_picture,goods_price
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -39,13 +41,13 @@
   <insert id="insert" parameterType="com.zking.pojo.Goods" >
     insert into goods (goods_id, goods_name, goods_place, 
       goodstype_id, uid, goods_status, 
-      goods_info, goods_picture)
+      goods_info, goods_picture,goods_price)
     values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPlace,jdbcType=VARCHAR}, 
       gods_info, goods_picture)
     values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPlace,jdbcType=INTEGER},
       #{goodstypeId,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{goodsStatus,jdbcType=INTEGER}, 
       #{goodsInfo,jdbcType=VARCHAR}, #{goodsPicture,jdbcType=LONGVARBINARY})
-      #{godsInfo,jdbcType=VARCHAR}, #{goodsPicture,jdbcType=VARCHAR})
+      #{godsInfo,jdbcType=VARCHAR}, #{goodsPicture,jdbcType=VARCHAR},#{goodsprice,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.zking.pojo.Goods" >
     insert into goods
@@ -61,6 +63,9 @@
       </if>
       <if test="goodstypeId != null" >
         goodstype_id,
+      </if>
+       <if test="goodsprice != null" >
+        goods_price,
       </if>
       <if test="uid != null" >
         uid,
@@ -87,6 +92,9 @@
       </if>
       <if test="goodstypeId != null" >
         #{goodstypeId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsprice != null" >
+        #{goodsprice,jdbcType=DOUBLE},
       </if>
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
@@ -120,6 +128,9 @@
       <if test="goodsStatus != null" >
         goods_status = #{goodsStatus,jdbcType=INTEGER},
       </if>
+      <if test="goodsprice != null" >
+        goods_price = #{goodsprice,jdbcType=INTEGER},
+      </if>
       <if test="goodsInfo != null" >
         goods_info = #{goodsInfo,jdbcType=VARCHAR},
       </if>
@@ -137,7 +148,8 @@
       uid = #{uid,jdbcType=INTEGER},
       goods_status = #{goodsStatus,jdbcType=INTEGER},
       goods_info = #{goodsInfo,jdbcType=VARCHAR},
-      goods_picture = #{goodsPicture,jdbcType=LONGVARBINARY}
+      goods_picture = #{goodsPicture,jdbcType=LONGVARBINARY},
+      goods_price = #{goodsprice,jdbcType=DOUBLE},
       gods_info = #{godsInfo,jdbcType=VARCHAR},
       goods_picture = #{goodsPicture,jdbcType=VARCHAR}
     where goods_id = #{goodsId,jdbcType=INTEGER}
@@ -157,6 +169,71 @@
   <select id="findAllGoods" resultMap="goods">
   		select * from goods
   	</select>
+  
+  <!-- 用户插入商品信息 -->	
+   <insert id="insertGood" parameterType="com.zking.pojo.Goods" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsPlace != null" >
+        goods_place,
+      </if>
+      <if test="goodstypeId != null" >
+        goodstype_id,
+      </if>
+      <if test="goodsprice != null" >
+        goods_price,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="goodsStatus != null" >
+        goods_status,
+      </if>
+      <if test="godsInfo != null" >
+        gods_info,
+      </if>
+      <if test="goodsPicture != null" >
+        goods_picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPlace != null" >
+        #{goodsPlace,jdbcType=INTEGER},
+      </if>
+      <if test="goodstypeId != null" >
+        #{goodstypeId,jdbcType=INTEGER},
+      </if>
+       <if test="goodsprice != null" >
+        #{goodsprice,jdbcType=DOUBLE},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsStatus != null" >
+        #{goodsStatus,jdbcType=INTEGER},
+      </if>
+      <if test="godsInfo != null" >
+        #{godsInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPicture != null" >
+        #{goodsPicture,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  
   
   
 </mapper>

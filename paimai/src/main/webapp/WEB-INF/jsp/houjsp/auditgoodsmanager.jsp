@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-<%@ include file="index.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="index.jsp" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40,36 +40,31 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th class="head0">用户名</th>
-                            <th class="head1">用户类型</th>
-                            <th class="head0">昵称</th>
-                            <th class="head1">性别</th>
-                            <th class="head0">注册时间</th>
-                            <th class="head1">邮箱</th>
-                            <th class="head0">电话</th>
+                            <th class="head0">物品名</th>
+                            <th class="head0">物品类型</th>
+                            <th class="head1">物品拥有人</th>
+                            <th class="head0">物品审核状态</th>
+                            <th class="head1">操作</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th class="head0">用户名</th>
-                            <th class="head1">用户类型</th>
-                            <th class="head0">昵称</th>
-                            <th class="head1">性别</th>
-                            <th class="head0">注册时间</th>
-                            <th class="head1">邮箱</th>
-                            <th class="head0">电话</th>
+                            <th class="head0">物品名</th>
+                            <th class="head0">物品类型</th>
+							<th class="head1">物品拥有人</th>
+                            <th class="head0">物品审核状态</th>
+                            <th class="head1">操作</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <c:forEach items="${users }" var="users">
+                        <c:forEach items="${goodssByStatus }" var="goodssByStatus">
 	                        <tr class="gradeX">
-	                            <td>${users.username }</td>
-	                            <td>${users.usertype.usertypeName }</td>
-	                            <td>${users.name }</td>
-	                            <td>${users.userinfo.userinfoSex }</td>
-	                            <td>${users.regTime }</td>
-	                            <td>${users.userinfo.userinfoMail }</td>
-	                            <td>${users.userinfo.userinfoPhone }</td>
+	                        	<td>${goodssByStatus.goodsName }</td>
+	                            <td>${goodssByStatus.goodstype.goodstype_name }</td>
+	                            <td>${goodssByStatus.user.username }</td>
+	                            <td>${goodssByStatus.goodsstatus.goodsstatus_name }</td>
+	                            <td style="width:120px;"><center>
+                            <a href="" class="stdbtn btn_red"><span>审核</span></a></center></td>
 	                        </tr>
                         </c:forEach>
                     </tbody>

@@ -2,6 +2,10 @@ package com.zking.controller.base;
 
 import java.util.List;
 
+
+
+
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,18 +14,18 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.zking.pojo.Goods;
+import com.zking.enetity.admin.Goods;
 import com.zking.pojo.GoodsType;
-import com.zking.pojo.User;
+import com.zking.enetity.admin.User;
 import com.zking.service.GoodsService;
 import com.zking.service.GoodsTypeService;
-import com.zking.service.UserService;
+import com.zking.service.NewUserService;
 
 @Controller
 @RequestMapping("/manager")
 public class AdminController extends BaseController{
 	@Resource
-	private UserService userService;
+	private NewUserService newUserService;
 	
 	@Resource
 	private GoodsService goodsService;
@@ -40,10 +44,11 @@ public class AdminController extends BaseController{
 	public ModelAndView findAllUser(ModelMap map){
 		List<User> users = null;
 		try {
-			users = userService.findAllUser();
+			users = newUserService.findAllUser();
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 		}
+		System.out.println(users);
 		map.addAttribute("users", users);
 		return new ModelAndView("houjsp/usermanager");
 	}
@@ -65,7 +70,22 @@ public class AdminController extends BaseController{
 		map.addAttribute("goodss", goodss);
 		return new ModelAndView("houjsp/goodsmanager");
 	}
-	
+	/**
+	 * 通过“未审核”字段查询所有未审核的物品
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping("/findAllGoodsByGoodsStatus")
+	public String findAllGoodsByGoodsStatus(ModelMap map){
+		List<Goods> goodssByStatus = null;
+		try {
+			goodssByStatus = goodsService.findAllGoodsByGoodsStatus("未审核");
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+		}
+		map.addAttribute("goodssByStatus", goodssByStatus);
+		return "houjsp/auditgoodsmanager";
+	}
 	
 	/**
 	 * 查找物品全部类型
@@ -122,6 +142,6 @@ public class AdminController extends BaseController{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
+		return "redirect:findAllGoodsType";
 	}
 }
