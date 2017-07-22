@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>主页面</title>
 </head>
-<body>
+<body class="withvernav">
   <div class="centercontent">
     	<div class="welinfo">
     		<span><img src="<%=basePath %>houCss/images/sun.png" alt="天气" /></span>

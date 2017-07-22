@@ -139,4 +139,34 @@
       status = #{status,jdbcType=INTEGER}
     where buylist_id = #{buylistId,jdbcType=INTEGER}
   </update>
+  <select id="findcount" resultType="com.zking.enetity.admin.Count">
+  	select 
+  	SUM(buylist_price) as allprice, COUNT(*) AS allcount 
+  	from buylist 
+  	where to_days(buylist_buytime) = to_days(now());
+  </select>
+  
+  <select id="finddaycount" resultType="com.zking.enetity.admin.Count">
+  	select 
+  	b.buylist_id as buylist_id,g.goods_name as goosname,b.buylist_price as buyprice,
+	b.buylist_buytime as buytime,u.name AS saleuername,u2.name AS buyuername
+  	from buylist b,goods g,user u,user u2
+  	where to_days(b.buylist_buytime) = to_days(now()) AND b.goods_id=g.goods_id and g.uid=u.uid AND b.buylist_man=u2.uid;
+  </select>
+  	 
+  <select id="findweekcount" resultType="com.zking.enetity.admin.Count">
+  	select 
+  	b.buylist_id as buylist_id,g.goods_name as goosname,b.buylist_price as buyprice,
+	b.buylist_buytime as buytime,u.name AS saleuername,u2.name AS buyuername
+  	from buylist b,goods g,user u,user u2
+  	where YEARWEEK(date_format(buylist_buytime,'%Y-%m-%d')) = YEARWEEK(now()) AND b.goods_id=g.goods_id and g.uid=u.uid AND b.buylist_man=u2.uid;
+  </select>
+ 
+ <select id="findmonthcount" resultType="com.zking.enetity.admin.Count">
+  	select 
+  	b.buylist_id as buylist_id,g.goods_name as goosname,b.buylist_price as buyprice,
+	b.buylist_buytime as buytime,u.name AS saleuername,u2.name AS buyuername
+  	from buylist b,goods g,user u,user u2
+  	where date_format(buylist_buytime,'%Y-%m')=date_format(now(),'%Y-%m') AND b.goods_id=g.goods_id and g.uid=u.uid AND b.buylist_man=u2.uid;
+  </select>
 </mapper>
