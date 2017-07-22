@@ -40,7 +40,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="cart box_1" style="width:100px;height: 50px;">			
 						<% 
 						//session.getAttribute("user");
-						User user = new User();
+						User user = (User)session.getAttribute("user");
 						if(null == user) {%>		
 						<a class="clearfix" href="#" style="font-size:15px;color:WHITE;text-decoration:none;float: left;margin-top: 15px;">登录</a>
 						<a class="clearfix" href="#" style="font-size:15px;color:WHITE;text-decoration:none;float: right;margin-top: 15px;">注册</a>

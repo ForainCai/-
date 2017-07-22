@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zking.dao.GoodsTypeMapper" >
+
+	<resultMap  id="goodstype" type="com.zking.pojo.GoodsType">
+		<id column="goodstype_id" property="goodstype_id" jdbcType="INTEGER" />
+   		 <result column="goodstype_name" property="goodstype_name" jdbcType="VARCHAR" />
+	</resultMap>
+
   <resultMap id="findAllUserType" type="com.zking.pojo.GoodsType" >
     <id column="goodstype_id" property="goodstype_id" jdbcType="INTEGER" />
     <result column="goodstype_name" property="goodstype_name" jdbcType="VARCHAR" />
@@ -29,7 +35,7 @@
   <sql id="Base_Column_List" >
     goodstype_id, goodstype_name
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="goodstype" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from goodstype

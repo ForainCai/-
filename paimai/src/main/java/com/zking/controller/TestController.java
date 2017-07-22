@@ -20,4 +20,5 @@ public class TestController extends BaseController{
 	public String personmain(){
 		return "qianjsp/personmain";
 	}
+	
 }

@@ -1,5 +1,7 @@
 package com.zking.service;
 
+import com.zking.pojo.User;
+
 public interface Demo {
-	public void test();
+	public User test(User u);
 }
