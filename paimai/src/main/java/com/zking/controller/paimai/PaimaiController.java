@@ -26,8 +26,8 @@ import com.zking.util.MessageSender;
 public class PaimaiController extends BaseController {
 	@Resource
 	private PaimaiService paimaiService;
-	@Resource
-	private MessageSender messagesender;
+//	@Resource
+//	private MessageSender messagesender;
 	@Resource
 	private Demo testService;
 	@RequestMapping("place")
@@ -61,15 +61,15 @@ public class PaimaiController extends BaseController {
 		message.setBuylist_id(Integer.valueOf(req.getParameter("buylist_id").toString()));
 		message.setMoney(Double.valueOf(req.getParameter("money").toString()));
 		message.setAddmoney(Double.valueOf(req.getParameter("addmoney").toString()));
-		if (messagesender.send(new Gson().toJson(message))) {
-			logger.info("信息发送成功"+message);
-			json.addProperty("result_code", 0);
-			json.addProperty("result_msg", "success");
-		}else{
-			logger.debug("信息发送失败"+message);
-			json.addProperty("result_code", -1);
-			json.addProperty("result_msg", "message send fail");
-		}
+//		if (messagesender.send(new Gson().toJson(message))) {
+//			logger.info("信息发送成功"+message);
+//			json.addProperty("result_code", 0);
+//			json.addProperty("result_msg", "success");
+//		}else{
+//			logger.debug("信息发送失败"+message);
+//			json.addProperty("result_code", -1);
+//			json.addProperty("result_msg", "message send fail");
+//		}
 		return json;
 	}
 }
