@@ -10,6 +10,8 @@ public class Goods {
     private Integer goodsPlace;
 
     private Integer goodstypeId;
+    
+    private double goodsprice;
 
     private Integer uid;
 
@@ -26,20 +28,37 @@ public class Goods {
     
     
     
-    public Goods(Integer goodsId, String goodsName, Integer goodsPlace, Integer goodstypeId, Integer uid,
-    		Integer goodsStatus, String godsInfo, String goodsPicture) {
-    	super();
-    	this.goodsId = goodsId;
-    	this.goodsName = goodsName;
-    	this.goodsPlace = goodsPlace;
-    	this.goodstypeId = goodstypeId;
-    	this.uid = uid;
-    	this.goodsStatus = goodsStatus;
-    	this.godsInfo = godsInfo;
-    	this.goodsPicture = goodsPicture;
-    }
 
-    public Integer getGoodsId() {
+    public Goods(Integer goodsId, String goodsName, Integer goodsPlace, Integer goodstypeId, double goodsprice,
+			Integer uid, Integer goodsStatus, String godsInfo, String goodsPicture) {
+		super();
+		this.goodsId = goodsId;
+		this.goodsName = goodsName;
+		this.goodsPlace = goodsPlace;
+		this.goodstypeId = goodstypeId;
+		this.goodsprice = goodsprice;
+		this.uid = uid;
+		this.goodsStatus = goodsStatus;
+		this.godsInfo = godsInfo;
+		this.goodsPicture = goodsPicture;
+	}
+
+
+
+
+	public double getGoodsprice() {
+		return goodsprice;
+	}
+
+
+
+	public void setGoodsprice(double goodsprice) {
+		this.goodsprice = goodsprice;
+	}
+
+
+
+	public Integer getGoodsId() {
         return goodsId;
     }
 
@@ -108,8 +127,8 @@ public class Goods {
 	@Override
 	public String toString() {
 		return "Goods [goodsId=" + goodsId + ", goodsName=" + goodsName + ", goodsPlace=" + goodsPlace
-				+ ", goodstypeId=" + goodstypeId + ", uid=" + uid + ", goodsStatus=" + goodsStatus + ", godsInfo="
-				+ godsInfo + ", goodsPicture=" + goodsPicture + "]";
+				+ ", goodstypeId=" + goodstypeId + ", goodsprice=" + goodsprice + ", uid=" + uid + ", goodsStatus="
+				+ goodsStatus + ", godsInfo=" + godsInfo + ", goodsPicture=" + goodsPicture + "]";
 	}
 
 

@@ -24,5 +24,5 @@ public interface GoodsTypeMapper {
     
     public int deleteGoodsType(int id) throws Exception;
     
-	public String addGoodsType(GoodsType gt) throws Exception;
+	public void addGoodsType(GoodsType gt) throws Exception;
 }

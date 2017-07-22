@@ -34,6 +34,12 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodss;
 	}
 
+	@Override
+	public List<Goods> findAllGoodsByGoodsStatus(String goods_status) throws Exception {
+		List<Goods> goodss = newGoodsMapper.findAllGoodsByGoodsStatus(goods_status);
+		return goodss;
+	}
+
 	//用户上传商品信息
 	public int customerInsertGoods(com.zking.pojo.Goods goods ) {
 		return goodsMapper.insertGood(goods);

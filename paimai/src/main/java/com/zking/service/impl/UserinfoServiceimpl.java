@@ -29,4 +29,13 @@ public  class UserinfoServiceimpl implements UserinfoService{
 		}	
 	}
 
+	@Override
+	public boolean upuserinfo(UserInfo userinfo) {
+		int a=userinfomapper.upuserinfo(userinfo);
+		if (a==0) {
+			return false;
+		}
+		return true;
+	}
+
 }

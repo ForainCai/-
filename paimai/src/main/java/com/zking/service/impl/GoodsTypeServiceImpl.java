@@ -29,16 +29,13 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
 	}
 
 	@Override
-	public String deleteGoodsType(int id) throws Exception {
-		System.out.println(id);
+	public void deleteGoodsType(int id) throws Exception {
 		goodsTypeMapper.deleteGoodsType(id);
-		return "·µ»Ø";
 	}
 
 	@Override
-	public String addGoodsType(GoodsType gt) throws Exception {
+	public void addGoodsType(GoodsType gt) throws Exception {
 		goodsTypeMapper.addGoodsType(gt);
-		return "·µ»Ø";
 	}
 
 }
