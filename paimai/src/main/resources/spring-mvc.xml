@@ -3,12 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:amq="http://activemq.apache.org/schema/core"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans  
                         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
                         http://www.springframework.org/schema/context  
                         http://www.springframework.org/schema/context/spring-context-4.0.xsd  
                         http://www.springframework.org/schema/mvc  
-                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.5.0.xsd">
 	<context:component-scan base-package="com.zking.controller" />
 
 	<!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
@@ -32,4 +34,45 @@
 		<!-- 内存中的最大值 -->
 		<property name="maxInMemorySize" value="40960" />
 	</bean>
+	
+	<!-- Activemq 连接工厂 -->
+    <bean id="activeMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <constructor-arg value="system1" />
+        <constructor-arg value="manager1" />
+        <constructor-arg value="failover:(tcp://127.0.0.1:61616)?timeout=3000" />
+    </bean>
+
+    <!-- ConnectionFactory Definition -->
+    <bean id="connectionFactory"
+        class="org.springframework.jms.connection.CachingConnectionFactory">
+        <constructor-arg ref="activeMQConnectionFactory" />
+    </bean>
+
+    <!-- Default Destination Queue Definition -->
+    <!-- 测试配置多个Destination -->
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="test.activemq.queue" />
+    </bean>
+
+    <!-- JmsTemplate Definition -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="defaultDestination" ref="destination" />
+    </bean>
+
+    <!-- Message Sender Definition -->
+    <bean id="messageSender" class="com.zking.util.MessageSender">
+        <constructor-arg index="0" ref="jmsTemplate" />
+        <constructor-arg index="1" ref="destination" />
+    </bean>
+
+    <!-- 消息监听器，主要监听的目的地址 Message Receiver Definition -->
+    <bean id="messageReceiver" class="com.zking.util.MessageReceiver">
+    </bean>
+    <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="destinationName" value="test.activemq.queue" />
+        <property name="messageListener" ref="messageReceiver" />
+    </bean>
+	
 </beans>
